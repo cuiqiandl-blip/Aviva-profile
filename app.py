@@ -12,7 +12,7 @@ st.markdown("""
     h1 { color: #111111; }
     h2 { color: #222222; border-bottom: 2px solid #f0f2f6; padding-bottom: 10px; }
     </style>
-    """, unsafe_html=True)
+    """, unsafe_allow_html=True)
 
 # --- HEADER SECTION ---
 st.title("Aviva Cui — Community Manager Portfolio")
@@ -85,10 +85,4 @@ with col4:
 
 st.divider()
 
-# --- FOOTER ---
-st.markdown("""
-<div style="text-align: center; padding: 10px;">
-    <strong>Let's Build Something Impactful Together</strong><br>
-    📧 cuiqiandl@gmail.com | 📱 021 086 68972 | 📍 Ōtautahi Christchurch
-</div>
-""", unsafe_html=True)
+# --- FOOT
