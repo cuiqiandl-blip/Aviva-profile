@@ -4,51 +4,51 @@ import pandas as pd
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="Aviva Cui | Portfolio", layout="centered", initial_sidebar_state="collapsed")
 
-# --- PREMIUM EDITORIAL CSS ---
+# --- PREMIUM DARK EDITORIAL CSS ---
 st.markdown("""
     <style>
     /* Import elegant Google Fonts */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
 
-    /* Global styling for stark, clean look */
-    html, body, [class*="css"] {
+    /* Global styling for stark, dark minimalist look */
+    html, body, [class*="css"], .stApp {
         font-family: 'Inter', sans-serif;
-        background-color: #ffffff;
-        color: #111111;
+        background-color: #0a0a0a !important;
+        color: #f0f0f0 !important;
     }
     
-    /* Elegant Serif Headers */
+    /* Elegant Serif Headers - White */
     h1, h2, h3, h4 {
         font-family: 'Playfair Display', serif;
-        color: #000000 !important;
+        color: #ffffff !important;
         font-weight: 400;
         letter-spacing: 0.5px;
     }
     
-    /* Center and narrow the main content column to read like an editorial article */
+    /* Center and narrow the main content column */
     .main .block-container {
         padding-top: 4rem !important;
         padding-bottom: 4rem !important;
         max-width: 800px; 
     }
     
-    /* Hide all standard Streamlit branding */
+    /* Hide standard Streamlit branding */
     header {visibility: hidden;}
     footer {visibility: hidden;}
     #MainMenu {visibility: hidden;}
     
-    /* Minimalist sharp lines */
+    /* Minimalist sharp lines - Dark grey */
     hr {
-        border-top: 1px solid #eeeeee;
+        border-top: 1px solid #333333;
         margin-top: 3rem;
         margin-bottom: 3rem;
     }
     
-    /* Sharp, high-fashion style buttons */
+    /* Sharp, high-fashion style buttons - Dark Mode */
     div.stButton > button:first-child {
         background-color: transparent;
-        color: #000000;
-        border: 1px solid #000000;
+        color: #ffffff;
+        border: 1px solid #ffffff;
         border-radius: 0px;
         font-family: 'Inter', sans-serif;
         text-transform: uppercase;
@@ -58,28 +58,33 @@ st.markdown("""
         margin-top: 5px;
     }
     div.stButton > button:hover {
-        background-color: #000000;
-        color: #ffffff;
-        border: 1px solid #000000;
+        background-color: #ffffff;
+        color: #000000;
+        border: 1px solid #ffffff;
     }
     
-    /* Style markdown links to look clean */
+    /* Style markdown links */
     a {
-        color: #000000 !important;
+        color: #ffffff !important;
         text-decoration: underline;
         text-underline-offset: 4px;
     }
     
-    /* Give images a tiny bit of breathing room at the bottom */
+    /* Give images breathing room */
     .stImage {
         margin-bottom: 0.5rem;
+    }
+
+    /* Override standard markdown text color */
+    .stMarkdown p {
+        color: #d0d0d0 !important;
     }
     </style>
     """, unsafe_allow_html=True)
 
 # --- HEADER SECTION ---
 st.title("Aviva Cui.")
-st.markdown("<p style='font-size: 1.2rem; font-weight: 300; color: #555555;'>Cultivating Authentic Communities & Data-Driven Growth.</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-size: 1.2rem; font-weight: 300; color: #aaaaaa;'>Cultivating Authentic Communities & Data-Driven Growth.</p>", unsafe_allow_html=True)
 
 st.markdown("""
 I bridge the gap between high-stakes stakeholder engagement and organic digital growth. 
@@ -124,20 +129,20 @@ st.markdown("""
 
 st.write("") # Spacer
 
-# Minimalist custom table
+# Minimalist dark custom table
 metrics_html = """
-<table style="width:100%; text-align:left; border-collapse: collapse; font-size: 0.9rem;">
-  <tr style="border-bottom: 1px solid #000;">
-    <th style="padding: 10px 0;">Content Category</th>
-    <th style="padding: 10px 0;">Community Goal</th>
-    <th style="padding: 10px 0;">Primary Action</th>
+<table style="width:100%; text-align:left; border-collapse: collapse; font-size: 0.9rem; color: #f0f0f0;">
+  <tr style="border-bottom: 1px solid #ffffff;">
+    <th style="padding: 10px 0; color: #ffffff;">Content Category</th>
+    <th style="padding: 10px 0; color: #ffffff;">Community Goal</th>
+    <th style="padding: 10px 0; color: #ffffff;">Primary Action</th>
   </tr>
-  <tr style="border-bottom: 1px solid #eee;">
+  <tr style="border-bottom: 1px solid #333333;">
     <td style="padding: 10px 0;">Organic Storytelling</td>
     <td style="padding: 10px 0;">Deep Trust & Empathy</td>
     <td style="padding: 10px 0;">High Comment Velocity</td>
   </tr>
-  <tr style="border-bottom: 1px solid #eee;">
+  <tr style="border-bottom: 1px solid #333333;">
     <td style="padding: 10px 0;">FMCG Collabs (Collagen)</td>
     <td style="padding: 10px 0;">Product Discovery</td>
     <td style="padding: 10px 0;">High Save/Share Rate</td>
@@ -156,7 +161,7 @@ st.markdown("---")
 # --- FOOTER ---
 st.markdown("""
 <div style="text-align: center; padding: 20px;">
-    <p style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 5px;">Let's build something impactful together.</p>
-    <p style="font-size: 0.85rem; color: #555555;">cuiqiandl@gmail.com &nbsp;&nbsp;|&nbsp;&nbsp; 021 086 68972 &nbsp;&nbsp;|&nbsp;&nbsp; Ōtautahi Christchurch</p>
+    <p style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 5px; color: #ffffff;">Let's build something impactful together.</p>
+    <p style="font-size: 0.85rem; color: #aaaaaa;">cuiqiandl@gmail.com &nbsp;&nbsp;|&nbsp;&nbsp; 021 086 68972 &nbsp;&nbsp;|&nbsp;&nbsp; Ōtautahi Christchurch</p>
 </div>
 """, unsafe_allow_html=True)
