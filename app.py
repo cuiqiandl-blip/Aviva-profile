@@ -91,15 +91,18 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # --- HERO SECTION ---
-st.image("IMG_9270.jpeg", use_container_width=True)
+st.image("Image_20260601223856_28_1.png", use_container_width=True)
 st.write("") # Spacer
 
 st.markdown("<h1>AVIVA CUI</h1>", unsafe_allow_html=True)
 st.markdown("<h4>THE ART OF COMMUNITY</h4>", unsafe_allow_html=True)
 
+# Civil Defence YouTube Button
+st.link_button("VIEW CIVIL DEFENCE CAMPAIGN", "https://youtu.be/-5L7fV-XE00?si=9RXgbIOT-5jyZ2zL")
+
 st.write("") # Spacer
 st.markdown("""
-Bridging the gap between high-stakes stakeholder engagement and organic digital growth. 
+Bridging the gap between high-stakes stakeholder engagement—from Civil Defence readiness and Apollo Project stadium mapping—to organic digital growth. 
 By leveraging audience psychology, cross-cultural consumer insights, and transparent storytelling, 
 I turn passive viewers into highly engaged, loyal brand communities.
 """)
@@ -139,7 +142,7 @@ st.markdown("""
 <p style='font-size: 0.9rem; text-align: center; max-width: 700px; margin: auto;'>
 <strong>Analytical Rigor:</strong> Tracking engagement metrics to pivot strategies and maximize reach.<br>
 <strong>Campaign Scaling:</strong> Executing targeted campaigns to deliver massive engagement boosts.<br>
-<strong>Founder Mindset:</strong> Handling the operational reality—from customer satisfaction to supply chains.
+<strong>Founder Mindset:</strong> As the founder of a startup protein powder brand, I handle the operational reality—from customer satisfaction to supply chain logistics.
 </p>
 """, unsafe_allow_html=True)
 
