@@ -90,12 +90,12 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # --- HERO SECTION WITH TEXT OVERLAY ---
-st.image("Image_20260601223856_28_1.png", use_container_width=True)
+st.image("985523c3-37d1-48dd-9879-9d8cbb03bab0.jpeg", use_container_width=True)
 
-# CSS trick to pull the title up over the image
+# CSS trick to pull the title up over the image with crisp white text
 st.markdown("""
     <div style="margin-top: -30%; padding-bottom: 20%; text-align: center; position: relative; z-index: 10;">
-        <h1 style="font-family: 'Playfair Display', serif; font-size: 5vw; color: white; letter-spacing: 6px; text-shadow: 2px 2px 15px rgba(0,0,0,0.6); margin: 0;">AVIVA CUI</h1>
+        <h1 style="font-family: 'Playfair Display', serif; font-size: 5vw; color: #ffffff !important; letter-spacing: 6px; text-shadow: 2px 2px 12px rgba(0,0,0,0.7), -1px -1px 8px rgba(0,0,0,0.5); margin: 0;">AVIVA CUI</h1>
     </div>
 """, unsafe_allow_html=True)
 
