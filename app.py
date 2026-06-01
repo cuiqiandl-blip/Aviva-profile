@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # --- PAGE CONFIG ---
-st.set_page_config(page_title="Aviva Cui | Portfolio", layout="centered", initial_sidebar_state="collapsed")
+st.set_page_config(page_title="Aviva Cui | Portfolio", layout="wide", initial_sidebar_state="collapsed")
 
 # --- CHÂLON PARIS INSPIRED CSS ---
 st.markdown("""
@@ -20,21 +20,22 @@ st.markdown("""
         font-family: 'Playfair Display', serif;
         color: #000000 !important;
         font-weight: 400;
-        text-align: center;
         letter-spacing: 1px;
     }
     
-    .stMarkdown p {
+    .intro-text {
         font-weight: 300;
         line-height: 1.8;
         color: #333333;
-        text-align: center;
+        font-size: 1.05rem;
+        text-align: justify;
     }
     
+    /* Expand the layout slightly to accommodate side-by-side columns */
     .main .block-container {
-        padding-top: 2rem !important;
+        padding-top: 1rem !important;
         padding-bottom: 4rem !important;
-        max-width: 900px; 
+        max-width: 1000px; 
     }
     
     /* Hide standard Streamlit branding */
@@ -45,11 +46,9 @@ st.markdown("""
     /* Minimalist thin lines */
     hr {
         border-top: 1px solid #e0e0e0;
-        margin-top: 3rem;
-        margin-bottom: 3rem;
-        width: 50%;
-        margin-left: auto;
-        margin-right: auto;
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+        width: 100%;
     }
     
     /* Chic, thin-bordered buttons */
@@ -90,53 +89,63 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# --- HERO SECTION ---
+# --- HERO SECTION WITH TEXT OVERLAY ---
 st.image("Image_20260601223856_28_1.png", use_container_width=True)
-st.write("") # Spacer
 
-st.markdown("<h1>AVIVA CUI</h1>", unsafe_allow_html=True)
-st.markdown("<h4>THE ART OF COMMUNITY</h4>", unsafe_allow_html=True)
-
-# Civil Defence YouTube Button
-st.link_button("VIEW CIVIL DEFENCE CAMPAIGN", "https://youtu.be/-5L7fV-XE00?si=9RXgbIOT-5jyZ2zL")
-
-st.write("") # Spacer
+# CSS trick to pull the title up over the image
 st.markdown("""
-Bridging the gap between high-stakes stakeholder engagement—from Civil Defence readiness and Apollo Project stadium mapping—to organic digital growth. 
-By leveraging audience psychology, cross-cultural consumer insights, and transparent storytelling, 
-I turn passive viewers into highly engaged, loyal brand communities.
-""")
+    <div style="margin-top: -30%; padding-bottom: 20%; text-align: center; position: relative; z-index: 10;">
+        <h1 style="font-family: 'Playfair Display', serif; font-size: 5vw; color: white; letter-spacing: 6px; text-shadow: 2px 2px 15px rgba(0,0,0,0.6); margin: 0;">AVIVA CUI</h1>
+    </div>
+""", unsafe_allow_html=True)
+
+st.write("") # Spacer
+
+# --- PROFILE & VIDEO (SIDE-BY-SIDE) ---
+col_text, col_video = st.columns([1, 1], gap="large")
+
+with col_text:
+    st.markdown("<h2 style='text-align: left; font-size: 2rem; margin-bottom: 20px;'>Profile.</h2>", unsafe_allow_html=True)
+    st.markdown("""
+    <div class="intro-text">
+    Grounded in Te Tiriti o Waitangi principles, I design and deliver engagement that is authentic, inclusive, and strategic, ensuring decisions are well-informed and outcomes are optimised. Alongside this, my emergency management and Duty Officer experience has strengthened my ability to communicate clearly, build trust, and support effective delivery in complex and high-stakes environments.
+    </div>
+    """, unsafe_allow_html=True)
+
+with col_video:
+    st.markdown("<h3 style='text-align: left; font-size: 1.2rem; margin-top: 5px; margin-bottom: 15px;'>Community engagement for Christchurch city</h3>", unsafe_allow_html=True)
+    st.video("https://youtu.be/-5L7fV-XE00?si=92H8znN8mAvgQznN")
 
 st.markdown("---")
 
 # --- SECTION 1: THE CONTENT STRATEGY ---
-st.markdown("<h2>THE PORTFOLIO</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center;'>THE PORTFOLIO</h2>", unsafe_allow_html=True)
 st.write("") # Spacer
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
     st.image("IMG_9584.jpeg", use_container_width=True)
-    st.markdown("#### The Journey")
-    st.markdown("<p style='font-size: 0.8rem; margin-top: -10px;'>Getting New Zealand Residency</p>", unsafe_allow_html=True)
+    st.markdown("<h4 style='text-align: center;'>The Journey</h4>", unsafe_allow_html=True)
+    st.markdown("<p style='font-size: 0.8rem; margin-top: -10px; text-align: center;'>Getting New Zealand Residency</p>", unsafe_allow_html=True)
     st.link_button("VIEW POST", "https://www.xiaohongshu.com/explore/69b39551000000001d01a139?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBQjm4fpq5mn1gNaXvSmqHEycceO2k-imt_Fbpuwvq6H8=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780181402&share_id=53e9fd52d8c04b7dae101bdce8eb1d6d&wechatWid=435edd56e9ec82ab602023bc63e060ea&wechatOrigin=menu")
 
 with col2:
     st.image("IMG_9586.jpeg", use_container_width=True)
-    st.markdown("#### Wellness")
-    st.markdown("<p style='font-size: 0.8rem; margin-top: -10px;'>Radiance Collagen Collab</p>", unsafe_allow_html=True)
+    st.markdown("<h4 style='text-align: center;'>Wellness</h4>", unsafe_allow_html=True)
+    st.markdown("<p style='font-size: 0.8rem; margin-top: -10px; text-align: center;'>Radiance Collagen Collab</p>", unsafe_allow_html=True)
     st.link_button("VIEW POST", "https://www.xiaohongshu.com/explore/6997fc1b000000000a03cdd9?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBgL-TXLpQOrDbz-8xDbRzFiDAhVtJE6woP0LxvZXLPPY=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780181502&share_id=335f634135904b8d9cbae1b42238a444&wechatWid=435edd56e9ec82ab602023bc63e060ea&wechatOrigin=menu")
 
 with col3:
     st.image("IMG_9583.jpeg", use_container_width=True)
-    st.markdown("#### Reach")
-    st.markdown("<p style='font-size: 0.8rem; margin-top: -10px;'>Leapmotor High-Ticket</p>", unsafe_allow_html=True)
+    st.markdown("<h4 style='text-align: center;'>Reach</h4>", unsafe_allow_html=True)
+    st.markdown("<p style='font-size: 0.8rem; margin-top: -10px; text-align: center;'>Leapmotor High-Ticket</p>", unsafe_allow_html=True)
     st.link_button("VIEW POST", "https://www.xiaohongshu.com/discovery/item/679b28f2000000002902bb7a?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=normal&xsec_token=CBmfg0EZN8pQGy56tj00S8Vk68ZE7QU07VM89gXHHbIjY=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780306736&share_id=28fdb21358f64eaeb70787e4de81bf1e")
 
 st.markdown("---")
 
 # --- SECTION 2: METRICS & CLOSED-LOOP FEEDBACK ---
-st.markdown("<h2>DATA & REALITY</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center;'>DATA & REALITY</h2>", unsafe_allow_html=True)
 
 st.markdown("""
 <p style='font-size: 0.9rem; text-align: center; max-width: 700px; margin: auto;'>
@@ -151,7 +160,7 @@ st.write("")
 # Minimalist light custom table, centered
 metrics_html = """
 <div style="display: flex; justify-content: center;">
-<table style="width:80%; text-align:center; border-collapse: collapse; font-size: 0.85rem; color: #000000;">
+<table style="width:90%; text-align:center; border-collapse: collapse; font-size: 0.85rem; color: #000000;">
   <tr style="border-bottom: 1px solid #000000;">
     <th style="padding: 15px 0; text-transform: uppercase; letter-spacing: 1px;">Content Category</th>
     <th style="padding: 15px 0; text-transform: uppercase; letter-spacing: 1px;">Community Goal</th>
