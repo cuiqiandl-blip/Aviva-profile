@@ -92,10 +92,10 @@ st.markdown("""
 # --- HERO SECTION WITH TEXT OVERLAY ---
 st.image("IMG_0433.jpeg", use_container_width=True)
 
-# CSS trick to pull the title up over the image with crisp white text
-# Changed margin-top to -25rem to push the text much higher up the page
+# CSS trick to pull the title up over the image
+# Adjusted to -35rem to push the name significantly higher up the photo
 st.markdown("""
-    <div style="margin-top: -25rem; margin-bottom: 15rem; text-align: center; position: relative; z-index: 999;">
+    <div style="margin-top: -35rem; margin-bottom: 25rem; text-align: center; position: relative; z-index: 999;">
         <h1 style="font-family: 'Playfair Display', serif; font-size: 4.5rem; color: #ffffff !important; letter-spacing: 8px; text-shadow: 2px 2px 10px rgba(0,0,0,0.6); margin: 0;">AVIVA CUI</h1>
     </div>
 """, unsafe_allow_html=True)
@@ -106,14 +106,15 @@ st.write("") # Spacer
 col_text, col_video = st.columns([1, 1], gap="large")
 
 with col_text:
+    # Added a top margin of 8rem to push this paragraph down relative to the video
     st.markdown("""
-    <div class="intro-text">
+    <div class="intro-text" style="margin-top: 8rem;">
     Grounded in Te Tiriti o Waitangi principles, I design and deliver engagement that is authentic, inclusive, and strategic, ensuring decisions are well-informed and outcomes are optimised. Alongside this, my emergency management and Duty Officer experience has strengthened my ability to communicate clearly, build trust, and support effective delivery in complex and high-stakes environments.
     </div>
     """, unsafe_allow_html=True)
 
 with col_video:
-    st.markdown("<h3 style='text-align: left; font-size: 1.2rem; margin-top: 0px; margin-bottom: 15px;'>A community engagement project for Christchurch city Chinese communities</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: left; font-size: 1.2rem; margin-top: 0px; margin-bottom: 15px;'>A community engagement project for Christchurch Chinese communities</h3>", unsafe_allow_html=True)
     st.video("https://youtu.be/-5L7fV-XE00?si=92H8znN8mAvgQznN")
 
 st.markdown("---")
@@ -129,18 +130,21 @@ with col1:
     st.markdown("<h4 style='text-align: center;'>The Journey</h4>", unsafe_allow_html=True)
     st.markdown("<p style='font-size: 0.8rem; margin-top: -10px; text-align: center;'>Getting New Zealand Residency</p>", unsafe_allow_html=True)
     st.link_button("VIEW POST", "https://www.xiaohongshu.com/explore/69b39551000000001d01a139?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBQjm4fpq5mn1gNaXvSmqHEycceO2k-imt_Fbpuwvq6H8=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780181402&share_id=53e9fd52d8c04b7dae101bdce8eb1d6d&wechatWid=435edd56e9ec82ab602023bc63e060ea&wechatOrigin=menu")
+    st.markdown("<p style='font-size: 0.7rem; color: #888888; text-align: center; margin-top: -5px;'>*Exit the log in pop up to view the video*</p>", unsafe_allow_html=True)
 
 with col2:
     st.image("IMG_9586.jpeg", use_container_width=True)
     st.markdown("<h4 style='text-align: center;'>Wellness</h4>", unsafe_allow_html=True)
     st.markdown("<p style='font-size: 0.8rem; margin-top: -10px; text-align: center;'>Radiance Collagen Collab</p>", unsafe_allow_html=True)
     st.link_button("VIEW POST", "https://www.xiaohongshu.com/explore/6997fc1b000000000a03cdd9?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBgL-TXLpQOrDbz-8xDbRzFiDAhVtJE6woP0LxvZXLPPY=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780181502&share_id=335f634135904b8d9cbae1b42238a444&wechatWid=435edd56e9ec82ab602023bc63e060ea&wechatOrigin=menu")
+    st.markdown("<p style='font-size: 0.7rem; color: #888888; text-align: center; margin-top: -5px;'>*Exit the log in pop up to view the video*</p>", unsafe_allow_html=True)
 
 with col3:
     st.image("IMG_9583.jpeg", use_container_width=True)
     st.markdown("<h4 style='text-align: center;'>Reach</h4>", unsafe_allow_html=True)
     st.markdown("<p style='font-size: 0.8rem; margin-top: -10px; text-align: center;'>Leapmotor High-Ticket</p>", unsafe_allow_html=True)
     st.link_button("VIEW POST", "https://www.xiaohongshu.com/discovery/item/679b28f2000000002902bb7a?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=normal&xsec_token=CBmfg0EZN8pQGy56tj00S8Vk68ZE7QU07VM89gXHHbIjY=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780306736&share_id=28fdb21358f64eaeb70787e4de81bf1e")
+    st.markdown("<p style='font-size: 0.7rem; color: #888888; text-align: center; margin-top: -5px;'>*Exit the log in pop up to view the video*</p>", unsafe_allow_html=True)
 
 st.markdown("---")
 
