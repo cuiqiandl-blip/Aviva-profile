@@ -23,11 +23,21 @@ st.markdown("""
         letter-spacing: 1px;
     }
     
-    .intro-text {
+    .job-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.3rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 15px;
+        margin-bottom: 10px;
+        color: #111;
+    }
+    
+    .job-desc {
         font-weight: 300;
         line-height: 1.8;
         color: #333333;
-        font-size: 1.05rem;
+        font-size: 0.95rem;
         text-align: justify;
     }
     
@@ -35,7 +45,7 @@ st.markdown("""
     .main .block-container {
         padding-top: 1rem !important;
         padding-bottom: 4rem !important;
-        max-width: 1000px; 
+        max-width: 1100px; 
     }
     
     /* Hide standard Streamlit branding */
@@ -84,7 +94,7 @@ st.markdown("""
     
     /* Image styling */
     .stImage img {
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -92,36 +102,51 @@ st.markdown("""
 # --- HERO SECTION WITH TEXT OVERLAY ---
 st.image("IMG_0433.jpeg", use_container_width=True)
 
-# CSS trick to pull the title up over the image
-# Adjusted to -35rem to push the name significantly higher up the photo
+# CSS trick to pull the title and profile text up over the image
+# If the text needs to go higher or lower, change the "-42rem" value
 st.markdown("""
-    <div style="margin-top: -35rem; margin-bottom: 25rem; text-align: center; position: relative; z-index: 999;">
+    <div style="margin-top: -42rem; margin-bottom: 18rem; text-align: center; position: relative; z-index: 999; padding: 0 10%;">
         <h1 style="font-family: 'Playfair Display', serif; font-size: 4.5rem; color: #ffffff !important; letter-spacing: 8px; text-shadow: 2px 2px 10px rgba(0,0,0,0.6); margin: 0;">AVIVA CUI</h1>
+        <p style="color: #ffffff !important; text-shadow: 1px 1px 6px rgba(0,0,0,0.9); font-size: 1.1rem; line-height: 1.8; font-weight: 400; margin-top: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+        Grounded in Te Tiriti o Waitangi principles, I design and deliver engagement that is authentic, inclusive, and strategic, ensuring decisions are well-informed and outcomes are optimised. Alongside this, my emergency management and Duty Officer experience has strengthened my ability to communicate clearly, build trust, and support effective delivery in complex and high-stakes environments.
+        </p>
     </div>
 """, unsafe_allow_html=True)
 
 st.write("") # Spacer
 
-# --- PROFILE & VIDEO (SIDE-BY-SIDE) ---
-col_text, col_video = st.columns([1, 1], gap="large")
+# --- EXPERIENCE SECTION 1 & 2 (SIDE-BY-SIDE) ---
+col_job1, col_job2 = st.columns([1, 1], gap="large")
 
-with col_text:
-    # Added a top margin of 8rem to push this paragraph down relative to the video
+with col_job1:
+    st.image("Image_20260602072626_31_1.jpeg", use_container_width=True)
+    st.markdown("<div class='job-title'>Engagement - Christchurch City Council</div>", unsafe_allow_html=True)
     st.markdown("""
-    <div class="intro-text" style="margin-top: 8rem;">
-    Grounded in Te Tiriti o Waitangi principles, I design and deliver engagement that is authentic, inclusive, and strategic, ensuring decisions are well-informed and outcomes are optimised. Alongside this, my emergency management and Duty Officer experience has strengthened my ability to communicate clearly, build trust, and support effective delivery in complex and high-stakes environments.
+    <div class='job-desc'>
+    Leading stakeholder engagement across infrastructure, transport, and consultation projects. Skilled at translating complex information into accessible content, analysing community insights to inform decision-making, and building strong relationships between communities, contractors, and local government.
     </div>
     """, unsafe_allow_html=True)
 
-with col_video:
-    st.markdown("<h3 style='text-align: left; font-size: 1.2rem; margin-top: 0px; margin-bottom: 15px;'>A community engagement project for Christchurch Chinese communities</h3>", unsafe_allow_html=True)
+with col_job2:
     st.video("https://youtu.be/-5L7fV-XE00?si=92H8znN8mAvgQznN")
+    st.markdown("<div class='job-title'>Community Resilience Coordinator</div>", unsafe_allow_html=True)
+    st.markdown("""
+    <div class='job-desc'>
+    Community resilience and emergency management specialist with experience leading preparedness initiatives, building trusted partnerships, and delivering community-centred engagement across diverse populations. Adept at bringing together communities, iwi, government agencies, emergency services, and infrastructure providers to improve preparedness, response, and recovery outcomes. Combines strategic engagement, public communications, and emergency management expertise to support resilient and well-informed communities.
+    </div>
+    """, unsafe_allow_html=True)
 
 st.markdown("---")
 
-# --- SECTION 1: THE CONTENT STRATEGY ---
-st.markdown("<h2 style='text-align: center; font-size: 1.8rem; letter-spacing: 2px;'>EXAMPLE POSTS FOR MY OWN CHINESE SOCIAL MEDIA</h2>", unsafe_allow_html=True)
-st.write("") # Spacer
+# --- EXPERIENCE SECTION 3: DIGITAL CONTENT CREATOR ---
+st.markdown("<h2 style='text-align: center; font-size: 1.8rem; letter-spacing: 2px; margin-bottom: 10px;'>DIGITAL CONTENT CREATOR</h2>", unsafe_allow_html=True)
+st.markdown("""
+<div class='job-desc' style='text-align: center; max-width: 800px; margin: 0 auto 3rem auto;'>
+Create engaging short-form video content, livestreams, and digital campaigns, using audience insights and storytelling techniques to strengthen engagement, grow communities, and deliver effective brand and communication outcomes.
+</div>
+""", unsafe_allow_html=True)
+
+st.markdown("<h4 style='text-align: center; font-size: 1.1rem; letter-spacing: 1px; color: #555; margin-bottom: 2rem;'>EXAMPLE POSTS FOR MY OWN CHINESE SOCIAL MEDIA</h4>", unsafe_allow_html=True)
 
 col1, col2, col3 = st.columns(3)
 
@@ -148,7 +173,7 @@ with col3:
 
 st.markdown("---")
 
-# --- SECTION 2: METRICS & CLOSED-LOOP FEEDBACK ---
+# --- SECTION 4: METRICS & CLOSED-LOOP FEEDBACK ---
 st.markdown("<h2 style='text-align: center; font-size: 1.8rem; letter-spacing: 2px;'>DATA & REALITY</h2>", unsafe_allow_html=True)
 
 st.markdown("""
