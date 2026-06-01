@@ -4,32 +4,37 @@ import pandas as pd
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="Aviva Cui | Portfolio", layout="centered", initial_sidebar_state="collapsed")
 
-# --- PREMIUM DARK EDITORIAL CSS ---
+# --- CHÂLON PARIS INSPIRED CSS ---
 st.markdown("""
     <style>
-    /* Import elegant Google Fonts */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
 
-    /* Global styling for stark, dark minimalist look */
     html, body, [class*="css"], .stApp {
-        font-family: 'Inter', sans-serif;
-        background-color: #0a0a0a !important;
-        color: #f0f0f0 !important;
+        font-family: 'Montserrat', sans-serif;
+        background-color: #ffffff !important;
+        color: #000000 !important;
     }
     
-    /* Elegant Serif Headers - White */
+    /* Elegant Serif Headers */
     h1, h2, h3, h4 {
         font-family: 'Playfair Display', serif;
-        color: #ffffff !important;
+        color: #000000 !important;
         font-weight: 400;
-        letter-spacing: 0.5px;
+        text-align: center;
+        letter-spacing: 1px;
     }
     
-    /* Center and narrow the main content column */
+    .stMarkdown p {
+        font-weight: 300;
+        line-height: 1.8;
+        color: #333333;
+        text-align: center;
+    }
+    
     .main .block-container {
-        padding-top: 4rem !important;
+        padding-top: 2rem !important;
         padding-bottom: 4rem !important;
-        max-width: 800px; 
+        max-width: 900px; 
     }
     
     /* Hide standard Streamlit branding */
@@ -37,57 +42,64 @@ st.markdown("""
     footer {visibility: hidden;}
     #MainMenu {visibility: hidden;}
     
-    /* Minimalist sharp lines - Dark grey */
+    /* Minimalist thin lines */
     hr {
-        border-top: 1px solid #333333;
+        border-top: 1px solid #e0e0e0;
         margin-top: 3rem;
         margin-bottom: 3rem;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
     }
     
-    /* Sharp, high-fashion style buttons - Dark Mode */
+    /* Chic, thin-bordered buttons */
+    div.stButton {
+        display: flex;
+        justify-content: center;
+    }
     div.stButton > button:first-child {
         background-color: transparent;
-        color: #ffffff;
-        border: 1px solid #ffffff;
+        color: #000000;
+        border: 1px solid #000000;
         border-radius: 0px;
-        font-family: 'Inter', sans-serif;
+        font-family: 'Montserrat', sans-serif;
         text-transform: uppercase;
-        font-size: 0.75rem;
-        letter-spacing: 1px;
-        padding: 0.5rem 1rem;
-        margin-top: 5px;
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+        padding: 0.6rem 1.5rem;
+        margin-top: 15px;
+        transition: all 0.3s ease;
     }
     div.stButton > button:hover {
-        background-color: #ffffff;
-        color: #000000;
-        border: 1px solid #ffffff;
+        background-color: #000000;
+        color: #ffffff;
     }
     
-    /* Style markdown links */
+    /* Link styling */
     a {
-        color: #ffffff !important;
-        text-decoration: underline;
-        text-underline-offset: 4px;
+        color: #000000 !important;
+        text-decoration: none;
+        border-bottom: 1px solid #000000;
+        padding-bottom: 2px;
     }
     
-    /* Give images breathing room */
-    .stImage {
-        margin-bottom: 0.5rem;
-    }
-
-    /* Override standard markdown text color */
-    .stMarkdown p {
-        color: #d0d0d0 !important;
+    /* Image styling */
+    .stImage img {
+        margin-bottom: 1rem;
     }
     </style>
     """, unsafe_allow_html=True)
 
-# --- HEADER SECTION ---
-st.title("Aviva Cui.")
-st.markdown("<p style='font-size: 1.2rem; font-weight: 300; color: #aaaaaa;'>Cultivating Authentic Communities & Data-Driven Growth.</p>", unsafe_allow_html=True)
+# --- HERO SECTION ---
+st.image("IMG_9270.jpeg", use_container_width=True)
+st.write("") # Spacer
 
+st.markdown("<h1>AVIVA CUI</h1>", unsafe_allow_html=True)
+st.markdown("<h4>THE ART OF COMMUNITY</h4>", unsafe_allow_html=True)
+
+st.write("") # Spacer
 st.markdown("""
-I bridge the gap between high-stakes stakeholder engagement and organic digital growth. 
+Bridging the gap between high-stakes stakeholder engagement and organic digital growth. 
 By leveraging audience psychology, cross-cultural consumer insights, and transparent storytelling, 
 I turn passive viewers into highly engaged, loyal brand communities.
 """)
@@ -95,64 +107,70 @@ I turn passive viewers into highly engaged, loyal brand communities.
 st.markdown("---")
 
 # --- SECTION 1: THE CONTENT STRATEGY ---
-st.header("The Three Pillars of Community.")
+st.markdown("<h2>THE PORTFOLIO</h2>", unsafe_allow_html=True)
 st.write("") # Spacer
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
     st.image("IMG_9584.jpeg", use_container_width=True)
-    st.markdown("#### Journey: Getting New Zealand residency")
-    st.link_button("View Post", "https://www.xiaohongshu.com/explore/69b39551000000001d01a139?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBQjm4fpq5mn1gNaXvSmqHEycceO2k-imt_Fbpuwvq6H8=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780181402&share_id=53e9fd52d8c04b7dae101bdce8eb1d6d&wechatWid=435edd56e9ec82ab602023bc63e060ea&wechatOrigin=menu")
+    st.markdown("#### The Journey")
+    st.markdown("<p style='font-size: 0.8rem; margin-top: -10px;'>Getting New Zealand Residency</p>", unsafe_allow_html=True)
+    st.link_button("VIEW POST", "https://www.xiaohongshu.com/explore/69b39551000000001d01a139?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBQjm4fpq5mn1gNaXvSmqHEycceO2k-imt_Fbpuwvq6H8=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780181402&share_id=53e9fd52d8c04b7dae101bdce8eb1d6d&wechatWid=435edd56e9ec82ab602023bc63e060ea&wechatOrigin=menu")
 
 with col2:
     st.image("IMG_9586.jpeg", use_container_width=True)
-    st.markdown("#### Vlog - Radiance collegan")
-    st.link_button("View Post", "https://www.xiaohongshu.com/explore/6997fc1b000000000a03cdd9?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBgL-TXLpQOrDbz-8xDbRzFiDAhVtJE6woP0LxvZXLPPY=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780181502&share_id=335f634135904b8d9cbae1b42238a444&wechatWid=435edd56e9ec82ab602023bc63e060ea&wechatOrigin=menu")
+    st.markdown("#### Wellness")
+    st.markdown("<p style='font-size: 0.8rem; margin-top: -10px;'>Radiance Collagen Collab</p>", unsafe_allow_html=True)
+    st.link_button("VIEW POST", "https://www.xiaohongshu.com/explore/6997fc1b000000000a03cdd9?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBgL-TXLpQOrDbz-8xDbRzFiDAhVtJE6woP0LxvZXLPPY=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780181502&share_id=335f634135904b8d9cbae1b42238a444&wechatWid=435edd56e9ec82ab602023bc63e060ea&wechatOrigin=menu")
 
 with col3:
     st.image("IMG_9583.jpeg", use_container_width=True)
-    st.markdown("#### Plog - Leapmotor car")
-    st.link_button("View Post", "https://www.xiaohongshu.com/discovery/item/679b28f2000000002902bb7a?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=normal&xsec_token=CBmfg0EZN8pQGy56tj00S8Vk68ZE7QU07VM89gXHHbIjY=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780306736&share_id=28fdb21358f64eaeb70787e4de81bf1e")
+    st.markdown("#### Reach")
+    st.markdown("<p style='font-size: 0.8rem; margin-top: -10px;'>Leapmotor High-Ticket</p>", unsafe_allow_html=True)
+    st.link_button("VIEW POST", "https://www.xiaohongshu.com/discovery/item/679b28f2000000002902bb7a?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=normal&xsec_token=CBmfg0EZN8pQGy56tj00S8Vk68ZE7QU07VM89gXHHbIjY=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780306736&share_id=28fdb21358f64eaeb70787e4de81bf1e")
 
 st.markdown("---")
 
 # --- SECTION 2: METRICS & CLOSED-LOOP FEEDBACK ---
-st.header("Data Insights & Operational Reality.")
+st.markdown("<h2>DATA & REALITY</h2>", unsafe_allow_html=True)
 
 st.markdown("""
-**Turning Feedback into Brand Strategy**
-* **Analytical Rigor:** Experienced in tracking audience engagement metrics to continuously pivot communication strategies and maximize reach.
-* **Campaign Scaling:** Proven track record of executing targeted digital campaigns, delivering a **55% engagement boost**.
-* **Founder Mindset:** As a startup founder managing a consumer product brand, I handle the operational reality—from customer satisfaction to supply chains—giving me a comprehensive view of the FMCG lifecycle.
-""")
+<p style='font-size: 0.9rem; text-align: center; max-width: 700px; margin: auto;'>
+<strong>Analytical Rigor:</strong> Tracking engagement metrics to pivot strategies and maximize reach.<br>
+<strong>Campaign Scaling:</strong> Executing targeted campaigns to deliver massive engagement boosts.<br>
+<strong>Founder Mindset:</strong> Handling the operational reality—from customer satisfaction to supply chains.
+</p>
+""", unsafe_allow_html=True)
 
-st.write("") # Spacer
+st.write("")
 
-# Minimalist dark custom table
+# Minimalist light custom table, centered
 metrics_html = """
-<table style="width:100%; text-align:left; border-collapse: collapse; font-size: 0.9rem; color: #f0f0f0;">
-  <tr style="border-bottom: 1px solid #ffffff;">
-    <th style="padding: 10px 0; color: #ffffff;">Content Category</th>
-    <th style="padding: 10px 0; color: #ffffff;">Community Goal</th>
-    <th style="padding: 10px 0; color: #ffffff;">Primary Action</th>
+<div style="display: flex; justify-content: center;">
+<table style="width:80%; text-align:center; border-collapse: collapse; font-size: 0.85rem; color: #000000;">
+  <tr style="border-bottom: 1px solid #000000;">
+    <th style="padding: 15px 0; text-transform: uppercase; letter-spacing: 1px;">Content Category</th>
+    <th style="padding: 15px 0; text-transform: uppercase; letter-spacing: 1px;">Community Goal</th>
+    <th style="padding: 15px 0; text-transform: uppercase; letter-spacing: 1px;">Primary Action</th>
   </tr>
-  <tr style="border-bottom: 1px solid #333333;">
-    <td style="padding: 10px 0;">Organic Storytelling</td>
-    <td style="padding: 10px 0;">Deep Trust & Empathy</td>
-    <td style="padding: 10px 0;">High Comment Velocity</td>
+  <tr style="border-bottom: 1px solid #eaeaea;">
+    <td style="padding: 15px 0;">Organic Storytelling</td>
+    <td style="padding: 15px 0;">Deep Trust & Empathy</td>
+    <td style="padding: 15px 0;">High Comment Velocity</td>
   </tr>
-  <tr style="border-bottom: 1px solid #333333;">
-    <td style="padding: 10px 0;">FMCG Collabs (Collagen)</td>
-    <td style="padding: 10px 0;">Product Discovery</td>
-    <td style="padding: 10px 0;">High Save/Share Rate</td>
+  <tr style="border-bottom: 1px solid #eaeaea;">
+    <td style="padding: 15px 0;">FMCG Collabs (Collagen)</td>
+    <td style="padding: 15px 0;">Product Discovery</td>
+    <td style="padding: 15px 0;">High Save/Share Rate</td>
   </tr>
   <tr>
-    <td style="padding: 10px 0;">High-Ticket (Auto)</td>
-    <td style="padding: 10px 0;">Brand Awareness</td>
-    <td style="padding: 10px 0;">Link Clicks/Inquiries</td>
+    <td style="padding: 15px 0;">High-Ticket (Auto)</td>
+    <td style="padding: 15px 0;">Brand Awareness</td>
+    <td style="padding: 15px 0;">Link Clicks/Inquiries</td>
   </tr>
 </table>
+</div>
 """
 st.markdown(metrics_html, unsafe_allow_html=True)
 
@@ -161,7 +179,9 @@ st.markdown("---")
 # --- FOOTER ---
 st.markdown("""
 <div style="text-align: center; padding: 20px;">
-    <p style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 5px; color: #ffffff;">Let's build something impactful together.</p>
-    <p style="font-size: 0.85rem; color: #aaaaaa;">cuiqiandl@gmail.com &nbsp;&nbsp;|&nbsp;&nbsp; 021 086 68972 &nbsp;&nbsp;|&nbsp;&nbsp; Ōtautahi Christchurch</p>
+    <p style="font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 15px; color: #000000;">Let's build something beautiful together.</p>
+    <p style="font-size: 0.75rem; color: #888888; text-transform: uppercase; letter-spacing: 1px;">
+        cuiqiandl@gmail.com &nbsp;&nbsp;|&nbsp;&nbsp; 021 086 68972 &nbsp;&nbsp;|&nbsp;&nbsp; Ōtautahi Christchurch
+    </p>
 </div>
 """, unsafe_allow_html=True)
