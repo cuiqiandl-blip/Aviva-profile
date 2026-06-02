@@ -6,7 +6,7 @@ import os
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="Aviva Cui | Portfolio", layout="wide", initial_sidebar_state="collapsed")
 
-# --- HELPER FUNCTION FOR FLIPBOOK ---
+# --- HELPER FUNCTION FOR IMAGES ---
 @st.cache_data
 def get_base64_of_file(file_path):
     """Reads a local image and converts it to base64 for HTML injection."""
@@ -15,7 +15,7 @@ def get_base64_of_file(file_path):
             return base64.b64encode(f.read()).decode()
     return None
 
-# --- ZURU EDGE & MONDAY HAIRCARE INSPIRED CSS ---
+# --- ZURU EDGE & A JOURNAL ON INSPIRED CSS ---
 st.markdown("""
     <style>
     /* Importing bold, modern Sans-Serif fonts */
@@ -27,7 +27,7 @@ st.markdown("""
         color: #000000 !important;
     }
     
-    /* MONDAY Haircare Scrolling Marquee Animation */
+    /* Editorial Scrolling Marquee Animation */
     @keyframes scroll-left {
         0% { transform: translateX(0); }
         100% { transform: translateX(-50%); }
@@ -87,6 +87,47 @@ st.markdown("""
     footer {visibility: hidden;}
     #MainMenu {visibility: hidden;}
     
+    /* Editorial Journal Book Layout */
+    .journal-book {
+        display: flex;
+        width: 100%;
+        height: 70vh;
+        border: 1px solid #000000;
+        margin-top: 2rem;
+        margin-bottom: 5rem;
+        background: #ffffff;
+    }
+    .journal-left {
+        width: 40%;
+        border-right: 1px solid #000000;
+        overflow: hidden;
+        position: relative;
+        padding: 20px;
+        background: #fdfdfd;
+    }
+    .journal-right {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 40px 60px;
+    }
+    .scroll-track {
+        display: flex;
+        flex-direction: column;
+        animation: verticalScroll 35s linear infinite;
+    }
+    .scroll-track img {
+        width: 100%;
+        object-fit: cover;
+        margin-bottom: 20px;
+        border: 1px solid #eaeaea;
+    }
+    @keyframes verticalScroll {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-50%); }
+    }
+    
     /* MASSIVE breathing room between sections */
     hr {
         border-top: 1px solid #e0e0e0;
@@ -127,12 +168,17 @@ st.markdown("""
         padding-bottom: 2px;
         font-weight: 500;
     }
+    
+    /* Image spacing */
+    .stImage {
+        margin-bottom: 0.5rem;
+    }
     </style>
     """, unsafe_allow_html=True)
 
-# --- MONDAY HAIRCARE STYLE MARQUEE (TOP BAR) ---
+# --- EDITORIAL MARQUEE (TOP BAR) ---
 st.markdown("""
-<div style="width: 100%; overflow: hidden; background-color: #000000; color: #ffffff; padding: 12px 0; white-space: nowrap; display: flex; margin-bottom: 0px;">
+<div style="width: 100%; overflow: hidden; background-color: #ffffff; color: #000000; border-top: 1px solid #000000; border-bottom: 1px solid #000000; padding: 12px 0; white-space: nowrap; display: flex; margin-bottom: 20px;">
     <div style="animation: scroll-left 25s linear infinite; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; display: flex; flex-shrink: 0;">
         <span style="padding-right: 40px;">COMMUNITY BUILDING &nbsp;&nbsp;•&nbsp;&nbsp; CONTENT CREATION & STORYTELLING &nbsp;&nbsp;•&nbsp;&nbsp; AUDIENCE BEHAVIOUR & PSYCHOLOGY &nbsp;&nbsp;•&nbsp;&nbsp; CROSS-CULTURAL ENGAGEMENT &nbsp;&nbsp;•&nbsp;&nbsp; AI-DRIVEN CURIOSITY & INNOVATION</span>
         <span style="padding-right: 40px;">COMMUNITY BUILDING &nbsp;&nbsp;•&nbsp;&nbsp; CONTENT CREATION & STORYTELLING &nbsp;&nbsp;•&nbsp;&nbsp; AUDIENCE BEHAVIOUR & PSYCHOLOGY &nbsp;&nbsp;•&nbsp;&nbsp; CROSS-CULTURAL ENGAGEMENT &nbsp;&nbsp;•&nbsp;&nbsp; AI-DRIVEN CURIOSITY & INNOVATION</span>
@@ -140,8 +186,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# --- HERO FLIPBOOK SECTION ---
-# List of all uploaded images to include in the flipbook sequence
+# --- "A JOURNAL ON" STYLE EDITORIAL HERO (SPLIT SCREEN BOOK) ---
 hero_images = [
     "IMG_0433.jpeg", 
     "IMG_9270.jpeg", 
@@ -160,57 +205,37 @@ for img_path in hero_images:
     if b64:
         valid_b64s.append((img_path, b64))
 
-# If images exist, build the HTML flipbook
 if valid_b64s:
-    total_images = len(valid_b64s)
-    time_per_image = 0.4  # Seconds each image is shown
-    total_time = total_images * time_per_image
-    visible_pct = 100.0 / total_images
-
-    # Generate the dynamic CSS for the flipbook keyframes
-    flipbook_css = f"""
-    <style>
-    .flip-img {{
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-        object-fit: cover;
-        opacity: 0;
-        animation: flipAnim {total_time}s infinite;
-    }}
-    @keyframes flipAnim {{
-        0%, {visible_pct - 0.1}% {{ opacity: 1; }}
-        {visible_pct}%, 100% {{ opacity: 0; }}
-    }}
-    </style>
-    """
-    
-    # Generate the HTML image tags with staggered delays
+    # Generate the HTML image tags
     images_html = ""
-    for i, (path, b64) in enumerate(valid_b64s):
+    for path, b64 in valid_b64s:
         ext = path.split('.')[-1]
-        delay = i * time_per_image
-        images_html += f'<img src="data:image/{ext};base64,{b64}" class="flip-img" style="animation-delay: {delay}s;">'
+        images_html += f'<img src="data:image/{ext};base64,{b64}">'
+    
+    # Duplicate the images_html to create a seamless infinite scroll
+    infinite_scroll_html = images_html + images_html
 
-    # Combine into the final Hero layout
-    hero_html = f"""
-    {flipbook_css}
-    <div style="position: relative; width: 100%; height: 80vh; background-color: #000; overflow: hidden; margin-bottom: 4rem;">
-        <div style="position: absolute; top:0; left:0; width: 100%; height: 100%;">
-            {images_html}
+    editorial_hero_html = f"""
+    <div class="journal-book">
+        <!-- Left Page: Smooth Vertical Scroll -->
+        <div class="journal-left">
+            <div class="scroll-track">
+                {infinite_scroll_html}
+            </div>
         </div>
-        <div style="position: absolute; top:0; left:0; width: 100%; height: 100%; background: rgba(0,0,0,0.3);"></div>
-        <div style="position: absolute; top:0; left:0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 10; padding: 0 10%; pointer-events: none;">
-            <h1 style="font-family: 'Inter', sans-serif; font-size: 5rem; font-weight: 800; color: #ffffff !important; letter-spacing: 4px; text-shadow: 2px 2px 15px rgba(0,0,0,0.8); margin: 0; text-align: center;">AVIVA CUI</h1>
-            <p style="font-family: 'Inter', sans-serif; color: #ffffff !important; text-shadow: 1px 1px 8px rgba(0,0,0,0.9); font-size: 1.15rem; line-height: 1.8; font-weight: 400; margin-top: 1.5rem; max-width: 800px; text-align: center;">
+        
+        <!-- Right Page: Fixed Typography -->
+        <div class="journal-right">
+            <h1 style="font-family: 'Inter', sans-serif; font-size: 5rem; font-weight: 800; color: #000000; letter-spacing: -2px; margin: 0 0 20px 0; line-height: 1;">AVIVA<br>CUI</h1>
+            <p style="font-family: 'Inter', sans-serif; color: #333333; font-size: 1.15rem; line-height: 1.8; font-weight: 300; margin: 0; max-width: 500px; text-align: justify;">
             Grounded in Te Tiriti o Waitangi principles, I design and deliver engagement that is authentic, inclusive, and strategic, ensuring decisions are well-informed and outcomes are optimised. Alongside this, my emergency management and Duty Officer experience has strengthened my ability to communicate clearly, build trust, and support effective delivery in complex and high-stakes environments.
             </p>
         </div>
     </div>
     """
-    st.markdown(hero_html, unsafe_allow_html=True)
+    st.markdown(editorial_hero_html, unsafe_allow_html=True)
 else:
-    # Fallback if no images are found
-    st.error("Flipbook images not found. Please ensure files are uploaded.")
+    st.error("Hero images not found. Please ensure files are uploaded to GitHub.")
 
 # --- ROLE 1: CHRISTCHURCH CITY COUNCIL (Text Left, Image Right) ---
 col_ccc_text, col_ccc_img = st.columns([1.1, 1], gap="large")
@@ -243,17 +268,23 @@ col_dcc_img, col_dcc_text = st.columns([1.2, 1], gap="large")
 with col_dcc_img:
     subcol3, subcol4, subcol5 = st.columns(3)
     with subcol3:
+        # REACH (First)
         st.image("IMG_9583.jpeg", use_container_width=True)
+        st.markdown("<p style='font-size: 0.85rem; font-weight: 300; margin-top: 0px; text-align: center;'>Leapmotor High-Ticket</p>", unsafe_allow_html=True)
         st.link_button("VIEW POST", "https://www.xiaohongshu.com/discovery/item/679b28f2000000002902bb7a?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=normal&xsec_token=CBmfg0EZN8pQGy56tj00S8Vk68ZE7QU07VM89gXHHbIjY=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780306736&share_id=28fdb21358f64eaeb70787e4de81bf1e")
         st.markdown("<p style='font-size: 0.65rem; color: #888888; text-align: center; margin-top: -5px;'>*If a login prompt appears, close it and click the first post on the left.*</p>", unsafe_allow_html=True)
     
     with subcol4:
+        # JOURNEY (Second)
         st.image("IMG_9584.jpeg", use_container_width=True)
+        st.markdown("<p style='font-size: 0.85rem; font-weight: 300; margin-top: 0px; text-align: center;'>Getting New Zealand Residency</p>", unsafe_allow_html=True)
         st.link_button("VIEW POST", "https://www.xiaohongshu.com/explore/69b39551000000001d01a139?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBQjm4fpq5mn1gNaXvSmqHEycceO2k-imt_Fbpuwvq6H8=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780181402&share_id=53e9fd52d8c04b7dae101bdce8eb1d6d&wechatWid=435edd56e9ec82ab602023bc63e060ea&wechatOrigin=menu")
         st.markdown("<p style='font-size: 0.65rem; color: #888888; text-align: center; margin-top: -5px;'>*If a login prompt appears, close it and click the first post on the left.*</p>", unsafe_allow_html=True)
 
     with subcol5:
+        # WELLNESS (Third)
         st.image("IMG_9586.jpeg", use_container_width=True)
+        st.markdown("<p style='font-size: 0.85rem; font-weight: 300; margin-top: 0px; text-align: center;'>Radiance Collagen Collab</p>", unsafe_allow_html=True)
         st.link_button("VIEW POST", "https://www.xiaohongshu.com/explore/6997fc1b000000000a03cdd9?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBgL-TXLpQOrDbz-8xDbRzFiDAhVtJE6woP0LxvZXLPPY=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780181502&share_id=335f634135904b8d9cbae1b42238a444&wechatWid=435edd56e9ec82ab602023bc63e060ea&wechatOrigin=menu")
         st.markdown("<p style='font-size: 0.65rem; color: #888888; text-align: center; margin-top: -5px;'>*If a login prompt appears, close it and click the first post on the left.*</p>", unsafe_allow_html=True)
 
