@@ -62,18 +62,18 @@ st.markdown("""
     footer {visibility: hidden;}
     #MainMenu {visibility: hidden;}
     
-    /* Minimalist thin lines */
+    /* MASSIVE breathing room between sections */
     hr {
         border-top: 1px solid #e0e0e0;
-        margin-top: 4rem;
-        margin-bottom: 4rem;
+        margin-top: 7rem;
+        margin-bottom: 7rem;
         width: 100%;
     }
     
     /* Chic, thin-bordered buttons */
     div.stButton {
         display: flex;
-        justify-content: flex-start;
+        justify-content: center; /* Centered under images */
     }
     div.stButton > button:first-child {
         background-color: transparent;
@@ -85,8 +85,7 @@ st.markdown("""
         font-size: 0.7rem;
         letter-spacing: 2px;
         padding: 0.6rem 1.5rem;
-        margin-top: 15px;
-        margin-right: 10px;
+        margin-top: 10px;
         transition: all 0.3s ease;
     }
     div.stButton > button:hover {
@@ -101,6 +100,11 @@ st.markdown("""
         border-bottom: 1px solid #000000;
         padding-bottom: 2px;
     }
+    
+    /* Image spacing */
+    .stImage {
+        margin-bottom: 0.5rem;
+    }
     </style>
     """, unsafe_allow_html=True)
 
@@ -109,7 +113,7 @@ st.image("IMG_0433.jpeg", use_container_width=True)
 
 # CSS trick to pull the title and profile text up over the image
 st.markdown("""
-    <div style="margin-top: -42rem; margin-bottom: 18rem; text-align: center; position: relative; z-index: 999; padding: 0 10%;">
+    <div style="margin-top: -42rem; margin-bottom: 22rem; text-align: center; position: relative; z-index: 999; padding: 0 10%;">
         <h1 style="font-family: 'Playfair Display', serif; font-size: 4.5rem; color: #ffffff !important; letter-spacing: 8px; text-shadow: 2px 2px 10px rgba(0,0,0,0.6); margin: 0;">AVIVA CUI</h1>
         <p style="color: #ffffff !important; text-shadow: 1px 1px 6px rgba(0,0,0,0.9); font-size: 1.1rem; line-height: 1.8; font-weight: 400; margin-top: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
         Grounded in Te Tiriti o Waitangi principles, I design and deliver engagement that is authentic, inclusive, and strategic, ensuring decisions are well-informed and outcomes are optimised. Alongside this, my emergency management and Duty Officer experience has strengthened my ability to communicate clearly, build trust, and support effective delivery in complex and high-stakes environments.
@@ -117,13 +121,8 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-st.write("") # Spacer
-
 # --- ROLE 1: CHRISTCHURCH CITY COUNCIL ---
-col_ccc_img, col_ccc_text = st.columns([1, 1], gap="large")
-
-with col_ccc_img:
-    st.image("Image_20260602072626_31_1.jpeg", use_container_width=True)
+col_ccc_text, col_ccc_img = st.columns([1, 1], gap="large")
 
 with col_ccc_text:
     st.markdown("<div class='job-title'>Engagement - Christchurch City Council</div>", unsafe_allow_html=True)
@@ -132,51 +131,47 @@ with col_ccc_text:
     I work across multiple infrastructure and consultation projects to design and deliver audience-focused engagement, customer support, and communications. My role involves translating complex technical information into clear and accessible messaging, building trusted relationships with communities and stakeholders, and ensuring feedback is captured and reflected in decision-making.
     </div>
     """, unsafe_allow_html=True)
-    
-    st.write("")
-    st.markdown("<strong style='font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;'>Engagement Campaign Examples:</strong>", unsafe_allow_html=True)
-    btn_col1, btn_col2 = st.columns([1, 1])
-    with btn_col1:
-         st.link_button("VIEW INSTAGRAM REEL 1", "https://www.instagram.com/reel/CqbP8tLvxkX/?igsh=MzU0cTF0MzV2amR1")
-    with btn_col2:
-         st.link_button("VIEW INSTAGRAM REEL 2", "https://www.instagram.com/reel/Cpo0bQNvE91/?igsh=MWVqM2VyNTBkaGMxYg==")
+
+with col_ccc_img:
+    st.markdown("<div style='text-align: center; margin-bottom: 15px;'><strong style='font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;'>Engagement Campaign Examples</strong></div>", unsafe_allow_html=True)
+    subcol1, subcol2 = st.columns(2)
+    with subcol1:
+        st.image("Image_20260602213535_35_1.jpg", use_container_width=True)
+        st.link_button("VIEW REEL 1", "https://www.instagram.com/reel/CqbP8tLvxkX/?igsh=MzU0cTF0MzV2amR1")
+    with subcol2:
+        st.image("Image_20260602214021_36_1.jpg", use_container_width=True)
+        st.link_button("VIEW REEL 2", "https://www.instagram.com/reel/Cpo0bQNvE91/?igsh=MWVqM2VyNTBkaGMxYg==")
 
 st.markdown("---")
 
 # --- ROLE 2: CIVIL DEFENCE ---
-col_cd_text, col_cd_video = st.columns([1, 1], gap="large")
+# Alternating layout: Text on the right, video on the left
+col_cd_video, col_cd_text = st.columns([1, 1], gap="large")
+
+with col_cd_video:
+    st.video("https://youtu.be/-5L7fV-XE00?si=92H8znN8mAvgQznN")
 
 with col_cd_text:
     st.markdown("<div class='job-title'>Community Resilience Coordinator</div>", unsafe_allow_html=True)
     st.markdown("""
     <div class='job-desc'>
-    Community resilience and emergency management specialist with experience leading preparedness initiatives, building trusted partnerships, and delivering community-centred engagement across diverse populations. Adept at bringing together communities, iwi, government agencies, emergency services, and infrastructure providers to improve preparedness, response, and recovery outcomes. Combines strategic engagement, public communications, and emergency management expertise to support resilient and well-informed communities.
+    I design and deliver community resilience programmes that strengthen emergency preparedness and participation across diverse communities. My work focuses on building trusted partnerships with community leaders, organisations, and agencies to co-design inclusive and culturally responsive initiatives. I facilitate training, workshops, and planning sessions that translate complex emergency information into clear, practical guidance, and I support coordinated multi-agency efforts during response and recovery events while maintaining effective community communication.
     </div>
     """, unsafe_allow_html=True)
-
-with col_cd_video:
-    st.video("https://youtu.be/-5L7fV-XE00?si=92H8znN8mAvgQznN")
 
 st.markdown("---")
 
 # --- ROLE 3: DIGITAL CONTENT CREATOR ---
 st.markdown("<h2 style='text-align: center; font-size: 1.8rem; letter-spacing: 2px; margin-bottom: 10px;'>DIGITAL CONTENT CREATOR</h2>", unsafe_allow_html=True)
 st.markdown("""
-<div class='job-desc' style='text-align: center; max-width: 800px; margin: 0 auto 3rem auto;'>
+<div class='job-desc' style='text-align: center; max-width: 800px; margin: 0 auto 4rem auto;'>
 Create engaging short-form video content, livestreams, and digital campaigns, using audience insights and storytelling techniques to strengthen engagement, grow communities, and deliver effective brand and communication outcomes.
 </div>
 """, unsafe_allow_html=True)
 
-st.markdown("<h4 style='text-align: center; font-size: 1.1rem; letter-spacing: 1px; color: #555; margin-bottom: 2rem;'>EXAMPLE POSTS FOR MY OWN CHINESE SOCIAL MEDIA</h4>", unsafe_allow_html=True)
+st.markdown("<h4 style='text-align: center; font-size: 1.1rem; letter-spacing: 1px; color: #555; margin-bottom: 2.5rem;'>EXAMPLE POSTS FOR MY OWN CHINESE SOCIAL MEDIA</h4>", unsafe_allow_html=True)
 
 col1, col2, col3 = st.columns(3)
-
-# Quick CSS override to center the Xiaohongshu buttons beneath their respective images
-st.markdown("""
-<style>
-div[data-testid="column"] div.stButton { justify-content: center; }
-</style>
-""", unsafe_allow_html=True)
 
 with col1:
     st.image("IMG_9584.jpeg", use_container_width=True)
