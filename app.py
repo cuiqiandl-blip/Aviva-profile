@@ -4,10 +4,10 @@ import pandas as pd
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="Aviva Cui | Portfolio", layout="wide", initial_sidebar_state="collapsed")
 
-# --- ZURU EDGE INSPIRED CSS ---
+# --- ZURU EDGE & MONDAY HAIRCARE INSPIRED CSS ---
 st.markdown("""
     <style>
-    /* Importing bold, modern Sans-Serif fonts matching ZURU Edge */
+    /* Importing bold, modern Sans-Serif fonts */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap');
 
     html, body, [class*="css"], .stApp {
@@ -16,7 +16,13 @@ st.markdown("""
         color: #000000 !important;
     }
     
-    /* ZURU Edge Style "Video" Animation for Images */
+    /* MONDAY Haircare Scrolling Marquee Animation */
+    @keyframes scroll-left {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+    
+    /* ZURU Edge Style "Video" Animation for Hero Image */
     @keyframes subtleZoom {
         0% { transform: scale(1); }
         100% { transform: scale(1.05); }
@@ -118,6 +124,16 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
+# --- MONDAY HAIRCARE STYLE MARQUEE (TOP BAR) ---
+st.markdown("""
+<div style="width: 100%; overflow: hidden; background-color: #000000; color: #ffffff; padding: 12px 0; white-space: nowrap; display: flex; margin-bottom: 20px;">
+    <div style="animation: scroll-left 25s linear infinite; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; display: flex; flex-shrink: 0;">
+        <span style="padding-right: 40px;">COMMUNITY BUILDING &nbsp;&nbsp;•&nbsp;&nbsp; CONTENT CREATION & STORYTELLING &nbsp;&nbsp;•&nbsp;&nbsp; AUDIENCE BEHAVIOUR & PSYCHOLOGY &nbsp;&nbsp;•&nbsp;&nbsp; CROSS-CULTURAL ENGAGEMENT &nbsp;&nbsp;•&nbsp;&nbsp; AI-DRIVEN CURIOSITY & INNOVATION</span>
+        <span style="padding-right: 40px;">COMMUNITY BUILDING &nbsp;&nbsp;•&nbsp;&nbsp; CONTENT CREATION & STORYTELLING &nbsp;&nbsp;•&nbsp;&nbsp; AUDIENCE BEHAVIOUR & PSYCHOLOGY &nbsp;&nbsp;•&nbsp;&nbsp; CROSS-CULTURAL ENGAGEMENT &nbsp;&nbsp;•&nbsp;&nbsp; AI-DRIVEN CURIOSITY & INNOVATION</span>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
 # --- HERO SECTION WITH TEXT OVERLAY ---
 st.image("IMG_0433.jpeg", use_container_width=True)
 
@@ -161,27 +177,30 @@ col_dcc_img, col_dcc_text = st.columns([1.2, 1], gap="large")
 with col_dcc_img:
     subcol3, subcol4, subcol5 = st.columns(3)
     with subcol3:
-        st.image("IMG_9584.jpeg", use_container_width=True)
-        st.markdown("<h4 style='text-align: center; font-size: 0.9rem; margin-bottom: 0px;'>The Journey</h4>", unsafe_allow_html=True)
-        st.link_button("VIEW POST", "https://www.xiaohongshu.com/explore/69b39551000000001d01a139?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBQjm4fpq5mn1gNaXvSmqHEycceO2k-imt_Fbpuwvq6H8=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780181402&share_id=53e9fd52d8c04b7dae101bdce8eb1d6d&wechatWid=435edd56e9ec82ab602023bc63e060ea&wechatOrigin=menu")
-        st.markdown("<p style='font-size: 0.65rem; color: #888888; text-align: center; margin-top: -5px;'>*Exit log in to view*</p>", unsafe_allow_html=True)
+        # REACH (First)
+        st.image("IMG_9583.jpeg", use_container_width=True)
+        st.markdown("<p style='font-size: 0.85rem; font-weight: 300; margin-top: 0px; text-align: center;'>Leapmotor High-Ticket</p>", unsafe_allow_html=True)
+        st.link_button("VIEW POST", "https://www.xiaohongshu.com/discovery/item/679b28f2000000002902bb7a?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=normal&xsec_token=CBmfg0EZN8pQGy56tj00S8Vk68ZE7QU07VM89gXHHbIjY=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780306736&share_id=28fdb21358f64eaeb70787e4de81bf1e")
+        st.markdown("<p style='font-size: 0.65rem; color: #888888; text-align: center; margin-top: -5px;'>*If a login prompt appears, close it and click the first post on the left.*</p>", unsafe_allow_html=True)
     
     with subcol4:
-        st.image("IMG_9586.jpeg", use_container_width=True)
-        st.markdown("<h4 style='text-align: center; font-size: 0.9rem; margin-bottom: 0px;'>Wellness</h4>", unsafe_allow_html=True)
-        st.link_button("VIEW POST", "https://www.xiaohongshu.com/explore/6997fc1b000000000a03cdd9?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBgL-TXLpQOrDbz-8xDbRzFiDAhVtJE6woP0LxvZXLPPY=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780181502&share_id=335f634135904b8d9cbae1b42238a444&wechatWid=435edd56e9ec82ab602023bc63e060ea&wechatOrigin=menu")
-        st.markdown("<p style='font-size: 0.65rem; color: #888888; text-align: center; margin-top: -5px;'>*Exit log in to view*</p>", unsafe_allow_html=True)
+        # JOURNEY (Second)
+        st.image("IMG_9584.jpeg", use_container_width=True)
+        st.markdown("<p style='font-size: 0.85rem; font-weight: 300; margin-top: 0px; text-align: center;'>Getting New Zealand Residency</p>", unsafe_allow_html=True)
+        st.link_button("VIEW POST", "https://www.xiaohongshu.com/explore/69b39551000000001d01a139?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBQjm4fpq5mn1gNaXvSmqHEycceO2k-imt_Fbpuwvq6H8=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780181402&share_id=53e9fd52d8c04b7dae101bdce8eb1d6d&wechatWid=435edd56e9ec82ab602023bc63e060ea&wechatOrigin=menu")
+        st.markdown("<p style='font-size: 0.65rem; color: #888888; text-align: center; margin-top: -5px;'>*If a login prompt appears, close it and click the first post on the left.*</p>", unsafe_allow_html=True)
 
     with subcol5:
-        st.image("IMG_9583.jpeg", use_container_width=True)
-        st.markdown("<h4 style='text-align: center; font-size: 0.9rem; margin-bottom: 0px;'>Reach</h4>", unsafe_allow_html=True)
-        st.link_button("VIEW POST", "https://www.xiaohongshu.com/discovery/item/679b28f2000000002902bb7a?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=normal&xsec_token=CBmfg0EZN8pQGy56tj00S8Vk68ZE7QU07VM89gXHHbIjY=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780306736&share_id=28fdb21358f64eaeb70787e4de81bf1e")
-        st.markdown("<p style='font-size: 0.65rem; color: #888888; text-align: center; margin-top: -5px;'>*Exit log in to view*</p>", unsafe_allow_html=True)
+        # WELLNESS (Third)
+        st.image("IMG_9586.jpeg", use_container_width=True)
+        st.markdown("<p style='font-size: 0.85rem; font-weight: 300; margin-top: 0px; text-align: center;'>Radiance Collagen Collab</p>", unsafe_allow_html=True)
+        st.link_button("VIEW POST", "https://www.xiaohongshu.com/explore/6997fc1b000000000a03cdd9?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBgL-TXLpQOrDbz-8xDbRzFiDAhVtJE6woP0LxvZXLPPY=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780181502&share_id=335f634135904b8d9cbae1b42238a444&wechatWid=435edd56e9ec82ab602023bc63e060ea&wechatOrigin=menu")
+        st.markdown("<p style='font-size: 0.65rem; color: #888888; text-align: center; margin-top: -5px;'>*If a login prompt appears, close it and click the first post on the left.*</p>", unsafe_allow_html=True)
 
 with col_dcc_text:
     st.markdown("""
     <div style="margin-top: 1rem;">
-        <div class='job-title'>Digital Content Creator - Self-Employed</div>
+        <div class='job-title'>Digital Content Creator</div>
         <div class='job-desc'>
         Outside of my professional roles, I build and manage a cross-cultural content platform on Xiaohongshu (RedNote) with 4,000+ followers and 140,000+ likes. I create short-form videos and livestream content that connect Chinese audiences with New Zealand culture, products, work life, and outdoor lifestyles.<br><br>
         I have collaborated with a range of New Zealand and international brands, including Radiance Collagen, Lorna Jane, Untouched World, Blackmores, Flavooo Protein, BioTrace, Partridge Jewellers, and Leapmotor. Through these collaborations, I have also begun supporting community engagement activities for Flavooo Protein.<br><br>
@@ -208,50 +227,6 @@ with col_cd_text:
 
 with col_cd_video:
     st.video("https://youtu.be/-5L7fV-XE00?si=92H8znN8mAvgQznN")
-
-st.markdown("---")
-
-# --- DATA & REALITY ---
-st.markdown("<div class='job-title' style='text-align: center;'>DATA & REALITY</div>", unsafe_allow_html=True)
-
-st.markdown("""
-<p style='font-size: 1rem; font-weight: 300; text-align: center; max-width: 700px; margin: auto;'>
-<strong>Analytical Rigor:</strong> Tracking engagement metrics to pivot strategies and maximize reach.<br>
-<strong>Campaign Scaling:</strong> Executing targeted campaigns to deliver massive engagement boosts.<br>
-<strong>Founder Mindset:</strong> As the founder of a startup protein powder brand, I handle the operational reality—from customer satisfaction to supply chain logistics.
-</p>
-""", unsafe_allow_html=True)
-
-st.write("")
-
-# Minimalist light custom table, centered
-metrics_html = """
-<div style="display: flex; justify-content: center;">
-<table style="width:90%; text-align:center; border-collapse: collapse; font-size: 0.9rem; color: #000000; font-family: 'Inter', sans-serif;">
-  <tr style="border-bottom: 2px solid #000000;">
-    <th style="padding: 15px 0; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Content Category</th>
-    <th style="padding: 15px 0; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Community Goal</th>
-    <th style="padding: 15px 0; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Primary Action</th>
-  </tr>
-  <tr style="border-bottom: 1px solid #eaeaea;">
-    <td style="padding: 15px 0; font-weight: 300;">Organic Storytelling</td>
-    <td style="padding: 15px 0; font-weight: 300;">Deep Trust & Empathy</td>
-    <td style="padding: 15px 0; font-weight: 300;">High Comment Velocity</td>
-  </tr>
-  <tr style="border-bottom: 1px solid #eaeaea;">
-    <td style="padding: 15px 0; font-weight: 300;">FMCG Collabs (Collagen)</td>
-    <td style="padding: 15px 0; font-weight: 300;">Product Discovery</td>
-    <td style="padding: 15px 0; font-weight: 300;">High Save/Share Rate</td>
-  </tr>
-  <tr>
-    <td style="padding: 15px 0; font-weight: 300;">High-Ticket (Auto)</td>
-    <td style="padding: 15px 0; font-weight: 300;">Brand Awareness</td>
-    <td style="padding: 15px 0; font-weight: 300;">Link Clicks/Inquiries</td>
-  </tr>
-</table>
-</div>
-"""
-st.markdown(metrics_html, unsafe_allow_html=True)
 
 st.markdown("---")
 
