@@ -39,7 +39,7 @@ st.markdown("""
         letter-spacing: 2px;
         margin-top: 0px;
         margin-bottom: 15px;
-        color: #111;
+        color: #000000;
     }
     
     .job-desc {
@@ -125,15 +125,16 @@ st.markdown("""
 col_ccc_text, col_ccc_img = st.columns([1, 1], gap="large")
 
 with col_ccc_text:
-    st.markdown("<div class='job-title'>Engagement - Christchurch City Council</div>", unsafe_allow_html=True)
     st.markdown("""
-    <div class='job-desc'>
-    I work across multiple infrastructure and consultation projects to design and deliver audience-focused engagement, customer support, and communications. My role involves translating complex technical information into clear and accessible messaging, building trusted relationships with communities and stakeholders, and ensuring feedback is captured and reflected in decision-making.
+    <div style="margin-top: 3.5rem;">
+        <div class='job-title'>Engagement - Christchurch City Council</div>
+        <div class='job-desc'>
+        I work across multiple infrastructure and consultation projects to design and deliver audience-focused engagement, customer support, and communications. My role involves translating complex technical information into clear and accessible messaging, building trusted relationships with communities and stakeholders, and ensuring feedback is captured and reflected in decision-making. See the Reels examples that I created for Welcome Back to the Ōtākaro Avon River Corridor
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
 with col_ccc_img:
-    st.markdown("<div style='text-align: center; margin-bottom: 15px;'><strong style='font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;'>Engagement Campaign Examples</strong></div>", unsafe_allow_html=True)
     subcol1, subcol2 = st.columns(2)
     with subcol1:
         st.image("Image_20260602213535_35_1.jpg", use_container_width=True)
@@ -152,17 +153,19 @@ with col_cd_video:
     st.video("https://youtu.be/-5L7fV-XE00?si=92H8znN8mAvgQznN")
 
 with col_cd_text:
-    st.markdown("<div class='job-title'>Community Resilience Coordinator</div>", unsafe_allow_html=True)
     st.markdown("""
-    <div class='job-desc'>
-    I design and deliver community resilience programmes that strengthen emergency preparedness and participation across diverse communities. My work focuses on building trusted partnerships with community leaders, organisations, and agencies to co-design inclusive and culturally responsive initiatives. I facilitate training, workshops, and planning sessions that translate complex emergency information into clear, practical guidance, and I support coordinated multi-agency efforts during response and recovery events while maintaining effective community communication.
+    <div style="margin-top: 2rem;">
+        <div class='job-title'>Community Resilience Coordinator</div>
+        <div class='job-desc'>
+        I design and deliver community resilience programmes that strengthen emergency preparedness and participation across diverse communities. My work focuses on building trusted partnerships with community leaders, organisations, and agencies to co-design inclusive and culturally responsive initiatives. I facilitate training, workshops, and planning sessions that translate complex emergency information into clear, practical guidance, and I support coordinated multi-agency efforts during response and recovery events while maintaining effective community communication. See the preparedness video that I was involved in for the Welcoming package.
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
 st.markdown("---")
 
 # --- ROLE 3: DIGITAL CONTENT CREATOR ---
-st.markdown("<h2 style='text-align: center; font-size: 1.8rem; letter-spacing: 2px; margin-bottom: 10px;'>DIGITAL CONTENT CREATOR</h2>", unsafe_allow_html=True)
+st.markdown("<div class='job-title' style='text-align: center;'>DIGITAL CONTENT CREATOR</div>", unsafe_allow_html=True)
 st.markdown("""
 <div class='job-desc' style='text-align: center; max-width: 800px; margin: 0 auto 4rem auto;'>
 Create engaging short-form video content, livestreams, and digital campaigns, using audience insights and storytelling techniques to strengthen engagement, grow communities, and deliver effective brand and communication outcomes.
@@ -197,7 +200,7 @@ with col3:
 st.markdown("---")
 
 # --- DATA & REALITY ---
-st.markdown("<h2 style='text-align: center; font-size: 1.8rem; letter-spacing: 2px;'>DATA & REALITY</h2>", unsafe_allow_html=True)
+st.markdown("<div class='job-title' style='text-align: center;'>DATA & REALITY</div>", unsafe_allow_html=True)
 
 st.markdown("""
 <p style='font-size: 0.9rem; text-align: center; max-width: 700px; margin: auto;'>
