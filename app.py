@@ -206,25 +206,22 @@ for img_path in hero_images:
         valid_b64s.append((img_path, b64))
 
 if valid_b64s:
-    # Generate the HTML image tags
+    # Generate the HTML image tags with strict self-closing tags
     images_html = ""
     for path, b64 in valid_b64s:
         ext = path.split('.')[-1]
-        images_html += f'<img src="data:image/{ext};base64,{b64}">'
+        images_html += f'<img src="data:image/{ext};base64,{b64}" />'
     
     # Duplicate the images_html to create a seamless infinite scroll
     infinite_scroll_html = images_html + images_html
 
     editorial_hero_html = f"""
     <div class="journal-book">
-        <!-- Left Page: Smooth Vertical Scroll -->
         <div class="journal-left">
             <div class="scroll-track">
                 {infinite_scroll_html}
             </div>
         </div>
-        
-        <!-- Right Page: Fixed Typography -->
         <div class="journal-right">
             <h1 style="font-family: 'Inter', sans-serif; font-size: 5rem; font-weight: 800; color: #000000; letter-spacing: -2px; margin: 0 0 20px 0; line-height: 1;">AVIVA<br>CUI</h1>
             <p style="font-family: 'Inter', sans-serif; color: #333333; font-size: 1.15rem; line-height: 1.8; font-weight: 300; margin: 0; max-width: 500px; text-align: justify;">
@@ -268,21 +265,18 @@ col_dcc_img, col_dcc_text = st.columns([1.2, 1], gap="large")
 with col_dcc_img:
     subcol3, subcol4, subcol5 = st.columns(3)
     with subcol3:
-        # REACH (First)
         st.image("IMG_9583.jpeg", use_container_width=True)
         st.markdown("<p style='font-size: 0.85rem; font-weight: 300; margin-top: 0px; text-align: center;'>Leapmotor High-Ticket</p>", unsafe_allow_html=True)
         st.link_button("VIEW POST", "https://www.xiaohongshu.com/discovery/item/679b28f2000000002902bb7a?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=normal&xsec_token=CBmfg0EZN8pQGy56tj00S8Vk68ZE7QU07VM89gXHHbIjY=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780306736&share_id=28fdb21358f64eaeb70787e4de81bf1e")
         st.markdown("<p style='font-size: 0.65rem; color: #888888; text-align: center; margin-top: -5px;'>*If a login prompt appears, close it and click the first post on the left.*</p>", unsafe_allow_html=True)
     
     with subcol4:
-        # JOURNEY (Second)
         st.image("IMG_9584.jpeg", use_container_width=True)
         st.markdown("<p style='font-size: 0.85rem; font-weight: 300; margin-top: 0px; text-align: center;'>Getting New Zealand Residency</p>", unsafe_allow_html=True)
         st.link_button("VIEW POST", "https://www.xiaohongshu.com/explore/69b39551000000001d01a139?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBQjm4fpq5mn1gNaXvSmqHEycceO2k-imt_Fbpuwvq6H8=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780181402&share_id=53e9fd52d8c04b7dae101bdce8eb1d6d&wechatWid=435edd56e9ec82ab602023bc63e060ea&wechatOrigin=menu")
         st.markdown("<p style='font-size: 0.65rem; color: #888888; text-align: center; margin-top: -5px;'>*If a login prompt appears, close it and click the first post on the left.*</p>", unsafe_allow_html=True)
 
     with subcol5:
-        # WELLNESS (Third)
         st.image("IMG_9586.jpeg", use_container_width=True)
         st.markdown("<p style='font-size: 0.85rem; font-weight: 300; margin-top: 0px; text-align: center;'>Radiance Collagen Collab</p>", unsafe_allow_html=True)
         st.link_button("VIEW POST", "https://www.xiaohongshu.com/explore/6997fc1b000000000a03cdd9?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBgL-TXLpQOrDbz-8xDbRzFiDAhVtJE6woP0LxvZXLPPY=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780181502&share_id=335f634135904b8d9cbae1b42238a444&wechatWid=435edd56e9ec82ab602023bc63e060ea&wechatOrigin=menu")
