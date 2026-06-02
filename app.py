@@ -16,13 +16,18 @@ st.markdown("""
         color: #000000 !important;
     }
     
-    /* ZURU Edge Style "Video" Animation for Hero Image */
+    /* ZURU Edge Style "Video" Animation for Images */
     @keyframes subtleZoom {
         0% { transform: scale(1); }
-        100% { transform: scale(1.08); }
+        100% { transform: scale(1.05); }
     }
     [data-testid="stImage"] img {
-        animation: subtleZoom 15s ease-in-out infinite alternate;
+        animation: subtleZoom 12s ease-in-out infinite alternate;
+        transition: transform 0.3s ease;
+    }
+    [data-testid="stImage"] img:hover {
+        transform: scale(1.02);
+        animation-play-state: paused;
     }
     
     /* Bold, heavy Sans-Serif Headers */
@@ -116,7 +121,6 @@ st.markdown("""
 # --- HERO SECTION WITH TEXT OVERLAY ---
 st.image("IMG_0433.jpeg", use_container_width=True)
 
-# CSS trick to pull the title and profile text up over the image
 st.markdown("""
     <div style="margin-top: -42rem; margin-bottom: 22rem; text-align: center; position: relative; z-index: 999; padding: 0 10%;">
         <h1 style="font-family: 'Inter', sans-serif; font-size: 5rem; font-weight: 800; color: #ffffff !important; letter-spacing: 4px; text-shadow: 2px 2px 10px rgba(0,0,0,0.6); margin: 0;">AVIVA CUI</h1>
@@ -126,15 +130,16 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-# --- ROLE 1: CHRISTCHURCH CITY COUNCIL ---
-col_ccc_text, col_ccc_img = st.columns([1, 1], gap="large")
+# --- ROLE 1: CHRISTCHURCH CITY COUNCIL (Text Left, Image Right) ---
+col_ccc_text, col_ccc_img = st.columns([1.1, 1], gap="large")
 
 with col_ccc_text:
     st.markdown("""
-    <div style="margin-top: 3.5rem;">
+    <div style="margin-top: 1rem;">
         <div class='job-title'>Engagement - Christchurch City Council</div>
         <div class='job-desc'>
-        I work across multiple infrastructure and consultation projects to design and deliver audience-focused engagement, customer support, and communications. My role involves translating complex technical information into clear and accessible messaging, building trusted relationships with communities and stakeholders, and ensuring feedback is captured and reflected in decision-making. See the Reels examples that I created for the Welcome Back to the Ōtākaro Avon River Corridor campaign.
+        I work across multiple infrastructure and consultation projects to deliver community engagement, customer support, and communications. My role involves managing enquiries and coordinating with internal teams to ensure issues are resolved and community members feel heard and informed. I also translate complex technical information into clear, accessible messaging, build trusted relationships with stakeholders, and ensure community feedback is reflected in project decisions. See the Reels examples I created for the Welcome Back to the Ōtākaro Avon River Corridor campaign.<br><br>
+        This role has strengthened my ability to engage diverse audiences, balance competing perspectives, and deliver positive community experiences across projects including the Lincoln Road Wastewater and Road Upgrade, Central City Coach Tour Bus Parking, and Halswell Junction Road cul-de-sac renaming project.
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -150,56 +155,59 @@ with col_ccc_img:
 
 st.markdown("---")
 
-# --- ROLE 2: CIVIL DEFENCE ---
-col_cd_video, col_cd_text = st.columns([1, 1], gap="large")
+# --- ROLE 2: DIGITAL CONTENT CREATOR (Image Left, Text Right) ---
+col_dcc_img, col_dcc_text = st.columns([1.2, 1], gap="large")
 
-with col_cd_video:
-    st.video("https://youtu.be/-5L7fV-XE00?si=92H8znN8mAvgQznN")
+with col_dcc_img:
+    subcol3, subcol4, subcol5 = st.columns(3)
+    with subcol3:
+        st.image("IMG_9584.jpeg", use_container_width=True)
+        st.markdown("<h4 style='text-align: center; font-size: 0.9rem; margin-bottom: 0px;'>The Journey</h4>", unsafe_allow_html=True)
+        st.link_button("VIEW POST", "https://www.xiaohongshu.com/explore/69b39551000000001d01a139?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBQjm4fpq5mn1gNaXvSmqHEycceO2k-imt_Fbpuwvq6H8=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780181402&share_id=53e9fd52d8c04b7dae101bdce8eb1d6d&wechatWid=435edd56e9ec82ab602023bc63e060ea&wechatOrigin=menu")
+        st.markdown("<p style='font-size: 0.65rem; color: #888888; text-align: center; margin-top: -5px;'>*Exit log in to view*</p>", unsafe_allow_html=True)
+    
+    with subcol4:
+        st.image("IMG_9586.jpeg", use_container_width=True)
+        st.markdown("<h4 style='text-align: center; font-size: 0.9rem; margin-bottom: 0px;'>Wellness</h4>", unsafe_allow_html=True)
+        st.link_button("VIEW POST", "https://www.xiaohongshu.com/explore/6997fc1b000000000a03cdd9?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBgL-TXLpQOrDbz-8xDbRzFiDAhVtJE6woP0LxvZXLPPY=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780181502&share_id=335f634135904b8d9cbae1b42238a444&wechatWid=435edd56e9ec82ab602023bc63e060ea&wechatOrigin=menu")
+        st.markdown("<p style='font-size: 0.65rem; color: #888888; text-align: center; margin-top: -5px;'>*Exit log in to view*</p>", unsafe_allow_html=True)
 
-with col_cd_text:
+    with subcol5:
+        st.image("IMG_9583.jpeg", use_container_width=True)
+        st.markdown("<h4 style='text-align: center; font-size: 0.9rem; margin-bottom: 0px;'>Reach</h4>", unsafe_allow_html=True)
+        st.link_button("VIEW POST", "https://www.xiaohongshu.com/discovery/item/679b28f2000000002902bb7a?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=normal&xsec_token=CBmfg0EZN8pQGy56tj00S8Vk68ZE7QU07VM89gXHHbIjY=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780306736&share_id=28fdb21358f64eaeb70787e4de81bf1e")
+        st.markdown("<p style='font-size: 0.65rem; color: #888888; text-align: center; margin-top: -5px;'>*Exit log in to view*</p>", unsafe_allow_html=True)
+
+with col_dcc_text:
     st.markdown("""
-    <div style="margin-top: 2rem;">
-        <div class='job-title'>Community Resilience Coordinator</div>
+    <div style="margin-top: 1rem;">
+        <div class='job-title'>Digital Content Creator - Self-Employed</div>
         <div class='job-desc'>
-        I design and deliver community resilience programmes that strengthen emergency preparedness and participation across diverse communities. My work focuses on building trusted partnerships with community leaders, organisations, and agencies to co-design inclusive and culturally responsive initiatives. I facilitate training, workshops, and planning sessions that translate complex emergency information into clear, practical guidance, and I support coordinated multi-agency efforts during response and recovery events while maintaining effective community communication. See the preparedness video I was involved in for the Welcoming Package.
+        Outside of my professional roles, I build and manage a cross-cultural content platform on Xiaohongshu (RedNote) with 4,000+ followers and 140,000+ likes. I create short-form videos and livestream content that connect Chinese audiences with New Zealand culture, products, work life, and outdoor lifestyles.<br><br>
+        I have collaborated with a range of New Zealand and international brands, including Radiance Collagen, Lorna Jane, Untouched World, Blackmores, Flavooo Protein, BioTrace, Partridge Jewellers, and Leapmotor. Through these collaborations, I have also begun supporting community engagement activities for Flavooo Protein.<br><br>
+        Managing my own platform has strengthened my commercial awareness, content creation skills, audience engagement strategies, and understanding of emerging social media trends and algorithms. Please see examples of my content and brand collaborations from my account.
         </div>
     </div>
     """, unsafe_allow_html=True)
 
 st.markdown("---")
 
-# --- ROLE 3: DIGITAL CONTENT CREATOR ---
-st.markdown("<div class='job-title' style='text-align: center; font-size: 2.2rem;'>DIGITAL CONTENT CREATOR</div>", unsafe_allow_html=True)
-st.markdown("""
-<div class='job-desc' style='text-align: center; max-width: 900px; margin: 0 auto 4rem auto;'>
-I build and manage a cross-cultural digital content platform with 4,000+ followers and 140,000+ likes, creating engaging short-form videos and livestream content that connect Kiwi and Chinese audiences through culture, products, work life, and outdoor lifestyles. My work focuses on storytelling, audience engagement, and community building, supported by regular analysis of engagement metrics to refine content strategy and improve reach. I also collaborate with local and international brands on sponsored content and campaigns, ensuring alignment between audience interests and brand objectives while delivering authentic and engaging digital experiences.
-</div>
-""", unsafe_allow_html=True)
+# --- ROLE 3: CIVIL DEFENCE (Text Left, Video Right) ---
+col_cd_text, col_cd_video = st.columns([1, 1], gap="large")
 
-st.markdown("<h4 style='text-align: center; font-size: 1.1rem; letter-spacing: 1px; color: #555; margin-bottom: 2.5rem;'>EXAMPLE POSTS FOR MY OWN CHINESE SOCIAL MEDIA</h4>", unsafe_allow_html=True)
+with col_cd_text:
+    st.markdown("""
+    <div style="margin-top: 1rem;">
+        <div class='job-title'>Community Resilience Coordinator - Christchurch City Council</div>
+        <div class='job-desc'>
+        I designed and delivered clear, accessible, and interactive community resilience programmes that translated complex emergency information into practical actions to strengthen emergency preparedness across diverse communities in Ōtautahi. My work also focused on building trusted partnerships with community leaders, organisations, and agencies through hui, events, workshops, and planning sessions to co-design community response plans and empower community resilience. See the preparedness video I was involved in for the Welcoming Package.<br><br>
+        This experience strengthened my leadership, project coordination, and communication skills, requiring me to balance multiple responsibilities and stakeholders while working in complex and high-pressure environments.
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    st.image("IMG_9584.jpeg", use_container_width=True)
-    st.markdown("<h4 style='text-align: center; font-size: 1.1rem; margin-bottom: 0px;'>The Journey</h4>", unsafe_allow_html=True)
-    st.markdown("<p style='font-size: 0.85rem; font-weight: 300; margin-top: 0px; text-align: center;'>Getting New Zealand Residency</p>", unsafe_allow_html=True)
-    st.link_button("VIEW POST", "https://www.xiaohongshu.com/explore/69b39551000000001d01a139?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBQjm4fpq5mn1gNaXvSmqHEycceO2k-imt_Fbpuwvq6H8=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780181402&share_id=53e9fd52d8c04b7dae101bdce8eb1d6d&wechatWid=435edd56e9ec82ab602023bc63e060ea&wechatOrigin=menu")
-    st.markdown("<p style='font-size: 0.75rem; color: #888888; text-align: center; margin-top: -5px;'>*Exit the log in pop up to view the video*</p>", unsafe_allow_html=True)
-
-with col2:
-    st.image("IMG_9586.jpeg", use_container_width=True)
-    st.markdown("<h4 style='text-align: center; font-size: 1.1rem; margin-bottom: 0px;'>Wellness</h4>", unsafe_allow_html=True)
-    st.markdown("<p style='font-size: 0.85rem; font-weight: 300; margin-top: 0px; text-align: center;'>Radiance Collagen Collab</p>", unsafe_allow_html=True)
-    st.link_button("VIEW POST", "https://www.xiaohongshu.com/explore/6997fc1b000000000a03cdd9?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBgL-TXLpQOrDbz-8xDbRzFiDAhVtJE6woP0LxvZXLPPY=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780181502&share_id=335f634135904b8d9cbae1b42238a444&wechatWid=435edd56e9ec82ab602023bc63e060ea&wechatOrigin=menu")
-    st.markdown("<p style='font-size: 0.75rem; color: #888888; text-align: center; margin-top: -5px;'>*Exit the log in pop up to view the video*</p>", unsafe_allow_html=True)
-
-with col3:
-    st.image("IMG_9583.jpeg", use_container_width=True)
-    st.markdown("<h4 style='text-align: center; font-size: 1.1rem; margin-bottom: 0px;'>Reach</h4>", unsafe_allow_html=True)
-    st.markdown("<p style='font-size: 0.85rem; font-weight: 300; margin-top: 0px; text-align: center;'>Leapmotor High-Ticket</p>", unsafe_allow_html=True)
-    st.link_button("VIEW POST", "https://www.xiaohongshu.com/discovery/item/679b28f2000000002902bb7a?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=normal&xsec_token=CBmfg0EZN8pQGy56tj00S8Vk68ZE7QU07VM89gXHHbIjY=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780306736&share_id=28fdb21358f64eaeb70787e4de81bf1e")
-    st.markdown("<p style='font-size: 0.75rem; color: #888888; text-align: center; margin-top: -5px;'>*Exit the log in pop up to view the video*</p>", unsafe_allow_html=True)
+with col_cd_video:
+    st.video("https://youtu.be/-5L7fV-XE00?si=92H8znN8mAvgQznN")
 
 st.markdown("---")
 
