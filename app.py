@@ -90,4 +90,32 @@ st.markdown("""
         letter-spacing: 1px;
         padding: 0.6rem 1.5rem;
         margin-top: 10px;
-        transition: all 0.3s
+        transition: all 0.3s ease;
+    }
+    div.stButton > button:hover {
+        background-color: #000000;
+        color: #ffffff;
+    }
+    
+    /* Link styling */
+    a {
+        color: #000000 !important;
+        text-decoration: none;
+        border-bottom: 2px solid #000000;
+        padding-bottom: 2px;
+        font-weight: 500;
+    }
+    
+    /* Image spacing */
+    .stImage {
+        margin-bottom: 0.5rem;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+# --- HERO SECTION WITH TEXT OVERLAY ---
+st.image("IMG_0433.jpeg", use_container_width=True)
+
+# CSS trick to pull the title and profile text up over the image
+st.markdown("""
+    <div style="margin-top: -42rem; margin-bottom: 22rem; text-align: center; position: relative; z-index: 999; padding: 0 10%;">
