@@ -238,4 +238,21 @@ metrics_html = """
   <tr>
     <td style="padding: 15px 0; font-weight: 300;">High-Ticket (Auto)</td>
     <td style="padding: 15px 0; font-weight: 300;">Brand Awareness</td>
-    <td
+    <td style="padding: 15px 0; font-weight: 300;">Link Clicks/Inquiries</td>
+  </tr>
+</table>
+</div>
+"""
+st.markdown(metrics_html, unsafe_allow_html=True)
+
+st.markdown("---")
+
+# --- FOOTER ---
+st.markdown("""
+<div style="text-align: center; padding: 20px;">
+    <p style="font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.5rem; margin-bottom: 15px; color: #000000; text-transform: uppercase; letter-spacing: -0.5px;">Let's build something beautiful together.</p>
+    <p style="font-size: 0.85rem; font-weight: 500; color: #555555; text-transform: uppercase; letter-spacing: 1px;">
+        cuiqiandl@gmail.com &nbsp;&nbsp;|&nbsp;&nbsp; 021 086 68972 &nbsp;&nbsp;|&nbsp;&nbsp; Ōtautahi Christchurch
+    </p>
+</div>
+""", unsafe_allow_html=True)
