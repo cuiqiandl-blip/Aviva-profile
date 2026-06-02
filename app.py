@@ -1,8 +1,19 @@
 import streamlit as st
 import pandas as pd
+import base64
+import os
 
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="Aviva Cui | Portfolio", layout="wide", initial_sidebar_state="collapsed")
+
+# --- HELPER FUNCTION FOR FLIPBOOK ---
+@st.cache_data
+def get_base64_of_file(file_path):
+    """Reads a local image and converts it to base64 for HTML injection."""
+    if os.path.exists(file_path):
+        with open(file_path, "rb") as f:
+            return base64.b64encode(f.read()).decode()
+    return None
 
 # --- ZURU EDGE & MONDAY HAIRCARE INSPIRED CSS ---
 st.markdown("""
@@ -22,7 +33,7 @@ st.markdown("""
         100% { transform: translateX(-50%); }
     }
     
-    /* ZURU Edge Style "Video" Animation for Hero Image */
+    /* Subtle zoom for standard images */
     @keyframes subtleZoom {
         0% { transform: scale(1); }
         100% { transform: scale(1.05); }
@@ -116,17 +127,12 @@ st.markdown("""
         padding-bottom: 2px;
         font-weight: 500;
     }
-    
-    /* Image spacing */
-    .stImage {
-        margin-bottom: 0.5rem;
-    }
     </style>
     """, unsafe_allow_html=True)
 
 # --- MONDAY HAIRCARE STYLE MARQUEE (TOP BAR) ---
 st.markdown("""
-<div style="width: 100%; overflow: hidden; background-color: #000000; color: #ffffff; padding: 12px 0; white-space: nowrap; display: flex; margin-bottom: 20px;">
+<div style="width: 100%; overflow: hidden; background-color: #000000; color: #ffffff; padding: 12px 0; white-space: nowrap; display: flex; margin-bottom: 0px;">
     <div style="animation: scroll-left 25s linear infinite; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; display: flex; flex-shrink: 0;">
         <span style="padding-right: 40px;">COMMUNITY BUILDING &nbsp;&nbsp;•&nbsp;&nbsp; CONTENT CREATION & STORYTELLING &nbsp;&nbsp;•&nbsp;&nbsp; AUDIENCE BEHAVIOUR & PSYCHOLOGY &nbsp;&nbsp;•&nbsp;&nbsp; CROSS-CULTURAL ENGAGEMENT &nbsp;&nbsp;•&nbsp;&nbsp; AI-DRIVEN CURIOSITY & INNOVATION</span>
         <span style="padding-right: 40px;">COMMUNITY BUILDING &nbsp;&nbsp;•&nbsp;&nbsp; CONTENT CREATION & STORYTELLING &nbsp;&nbsp;•&nbsp;&nbsp; AUDIENCE BEHAVIOUR & PSYCHOLOGY &nbsp;&nbsp;•&nbsp;&nbsp; CROSS-CULTURAL ENGAGEMENT &nbsp;&nbsp;•&nbsp;&nbsp; AI-DRIVEN CURIOSITY & INNOVATION</span>
@@ -134,17 +140,77 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# --- HERO SECTION WITH TEXT OVERLAY ---
-st.image("IMG_0433.jpeg", use_container_width=True)
+# --- HERO FLIPBOOK SECTION ---
+# List of all uploaded images to include in the flipbook sequence
+hero_images = [
+    "IMG_0433.jpeg", 
+    "IMG_9270.jpeg", 
+    "IMG_9584.jpeg", 
+    "IMG_9586.jpeg", 
+    "IMG_9583.jpeg", 
+    "Image_20260601223856_28_1.png", 
+    "Image_20260602072626_31_1.jpeg", 
+    "Image_20260602213535_35_1.jpg", 
+    "Image_20260602214021_36_1.jpg"
+]
 
-st.markdown("""
-    <div style="margin-top: -42rem; margin-bottom: 22rem; text-align: center; position: relative; z-index: 999; padding: 0 10%;">
-        <h1 style="font-family: 'Inter', sans-serif; font-size: 5rem; font-weight: 800; color: #ffffff !important; letter-spacing: 4px; text-shadow: 2px 2px 10px rgba(0,0,0,0.6); margin: 0;">AVIVA CUI</h1>
-        <p style="font-family: 'Inter', sans-serif; color: #ffffff !important; text-shadow: 1px 1px 6px rgba(0,0,0,0.9); font-size: 1.1rem; line-height: 1.8; font-weight: 400; margin-top: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
-        Grounded in Te Tiriti o Waitangi principles, I design and deliver engagement that is authentic, inclusive, and strategic, ensuring decisions are well-informed and outcomes are optimised. Alongside this, my emergency management and Duty Officer experience has strengthened my ability to communicate clearly, build trust, and support effective delivery in complex and high-stakes environments.
-        </p>
+valid_b64s = []
+for img_path in hero_images:
+    b64 = get_base64_of_file(img_path)
+    if b64:
+        valid_b64s.append((img_path, b64))
+
+# If images exist, build the HTML flipbook
+if valid_b64s:
+    total_images = len(valid_b64s)
+    time_per_image = 0.4  # Seconds each image is shown
+    total_time = total_images * time_per_image
+    visible_pct = 100.0 / total_images
+
+    # Generate the dynamic CSS for the flipbook keyframes
+    flipbook_css = f"""
+    <style>
+    .flip-img {{
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        animation: flipAnim {total_time}s infinite;
+    }}
+    @keyframes flipAnim {{
+        0%, {visible_pct - 0.1}% {{ opacity: 1; }}
+        {visible_pct}%, 100% {{ opacity: 0; }}
+    }}
+    </style>
+    """
+    
+    # Generate the HTML image tags with staggered delays
+    images_html = ""
+    for i, (path, b64) in enumerate(valid_b64s):
+        ext = path.split('.')[-1]
+        delay = i * time_per_image
+        images_html += f'<img src="data:image/{ext};base64,{b64}" class="flip-img" style="animation-delay: {delay}s;">'
+
+    # Combine into the final Hero layout
+    hero_html = f"""
+    {flipbook_css}
+    <div style="position: relative; width: 100%; height: 80vh; background-color: #000; overflow: hidden; margin-bottom: 4rem;">
+        <div style="position: absolute; top:0; left:0; width: 100%; height: 100%;">
+            {images_html}
+        </div>
+        <div style="position: absolute; top:0; left:0; width: 100%; height: 100%; background: rgba(0,0,0,0.3);"></div>
+        <div style="position: absolute; top:0; left:0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 10; padding: 0 10%; pointer-events: none;">
+            <h1 style="font-family: 'Inter', sans-serif; font-size: 5rem; font-weight: 800; color: #ffffff !important; letter-spacing: 4px; text-shadow: 2px 2px 15px rgba(0,0,0,0.8); margin: 0; text-align: center;">AVIVA CUI</h1>
+            <p style="font-family: 'Inter', sans-serif; color: #ffffff !important; text-shadow: 1px 1px 8px rgba(0,0,0,0.9); font-size: 1.15rem; line-height: 1.8; font-weight: 400; margin-top: 1.5rem; max-width: 800px; text-align: center;">
+            Grounded in Te Tiriti o Waitangi principles, I design and deliver engagement that is authentic, inclusive, and strategic, ensuring decisions are well-informed and outcomes are optimised. Alongside this, my emergency management and Duty Officer experience has strengthened my ability to communicate clearly, build trust, and support effective delivery in complex and high-stakes environments.
+            </p>
+        </div>
     </div>
-""", unsafe_allow_html=True)
+    """
+    st.markdown(hero_html, unsafe_allow_html=True)
+else:
+    # Fallback if no images are found
+    st.error("Flipbook images not found. Please ensure files are uploaded.")
 
 # --- ROLE 1: CHRISTCHURCH CITY COUNCIL (Text Left, Image Right) ---
 col_ccc_text, col_ccc_img = st.columns([1.1, 1], gap="large")
@@ -177,23 +243,17 @@ col_dcc_img, col_dcc_text = st.columns([1.2, 1], gap="large")
 with col_dcc_img:
     subcol3, subcol4, subcol5 = st.columns(3)
     with subcol3:
-        # REACH (First)
         st.image("IMG_9583.jpeg", use_container_width=True)
-        st.markdown("<p style='font-size: 0.85rem; font-weight: 300; margin-top: 0px; text-align: center;'>Leapmotor High-Ticket</p>", unsafe_allow_html=True)
         st.link_button("VIEW POST", "https://www.xiaohongshu.com/discovery/item/679b28f2000000002902bb7a?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=normal&xsec_token=CBmfg0EZN8pQGy56tj00S8Vk68ZE7QU07VM89gXHHbIjY=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780306736&share_id=28fdb21358f64eaeb70787e4de81bf1e")
         st.markdown("<p style='font-size: 0.65rem; color: #888888; text-align: center; margin-top: -5px;'>*If a login prompt appears, close it and click the first post on the left.*</p>", unsafe_allow_html=True)
     
     with subcol4:
-        # JOURNEY (Second)
         st.image("IMG_9584.jpeg", use_container_width=True)
-        st.markdown("<p style='font-size: 0.85rem; font-weight: 300; margin-top: 0px; text-align: center;'>Getting New Zealand Residency</p>", unsafe_allow_html=True)
         st.link_button("VIEW POST", "https://www.xiaohongshu.com/explore/69b39551000000001d01a139?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBQjm4fpq5mn1gNaXvSmqHEycceO2k-imt_Fbpuwvq6H8=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780181402&share_id=53e9fd52d8c04b7dae101bdce8eb1d6d&wechatWid=435edd56e9ec82ab602023bc63e060ea&wechatOrigin=menu")
         st.markdown("<p style='font-size: 0.65rem; color: #888888; text-align: center; margin-top: -5px;'>*If a login prompt appears, close it and click the first post on the left.*</p>", unsafe_allow_html=True)
 
     with subcol5:
-        # WELLNESS (Third)
         st.image("IMG_9586.jpeg", use_container_width=True)
-        st.markdown("<p style='font-size: 0.85rem; font-weight: 300; margin-top: 0px; text-align: center;'>Radiance Collagen Collab</p>", unsafe_allow_html=True)
         st.link_button("VIEW POST", "https://www.xiaohongshu.com/explore/6997fc1b000000000a03cdd9?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBgL-TXLpQOrDbz-8xDbRzFiDAhVtJE6woP0LxvZXLPPY=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780181502&share_id=335f634135904b8d9cbae1b42238a444&wechatWid=435edd56e9ec82ab602023bc63e060ea&wechatOrigin=menu")
         st.markdown("<p style='font-size: 0.65rem; color: #888888; text-align: center; margin-top: -5px;'>*If a login prompt appears, close it and click the first post on the left.*</p>", unsafe_allow_html=True)
 
