@@ -1,7 +1,5 @@
 import streamlit as st
 import pandas as pd
-import base64
-import os
 
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="Aviva Cui | Portfolio", layout="wide", initial_sidebar_state="collapsed")
@@ -36,12 +34,12 @@ st.markdown("""
     
     .job-title {
         font-family: 'Inter', sans-serif;
-        font-size: 1.5rem;
+        font-size: 1.8rem; /* Slightly larger to act as a section headline */
         font-weight: 800;
         text-transform: uppercase;
         letter-spacing: -0.5px;
         margin-top: 0px;
-        margin-bottom: 15px;
+        margin-bottom: 2rem;
         color: #ffffff;
         text-align: center;
     }
@@ -51,16 +49,16 @@ st.markdown("""
         line-height: 1.8;
         color: #cccccc; 
         font-size: 0.95rem;
-        text-align: justify; /* Keeps text neat and readable */
+        text-align: justify; 
         margin: 0 auto;
-        max-width: 850px; /* Centers the text block with lots of breathing room on the sides */
+        max-width: 800px; /* Constrains the text width for easy reading */
     }
     
-    /* Expand the layout slightly */
+    /* SQUEEZE THE LAYOUT: This makes the photos smaller and increases the black background */
     .main .block-container {
         padding-top: 2rem !important;
         padding-bottom: 4rem !important;
-        max-width: 1100px; 
+        max-width: 900px; /* Reduced from 1100px to create massive negative space */
     }
     
     /* Hide standard Streamlit branding */
@@ -153,6 +151,8 @@ st.markdown("""
 st.markdown("---")
 
 # --- ROLE 1: CHRISTCHURCH CITY COUNCIL ---
+st.markdown("<div class='job-title'>Engagement - Christchurch City Council</div>", unsafe_allow_html=True)
+
 # ROW 1: IMAGES
 col1, col2 = st.columns(2, gap="large")
 with col1:
@@ -165,7 +165,6 @@ with col2:
 # ROW 2: TEXT
 st.markdown("""
 <div style="margin-top: 3rem;">
-    <div class='job-title'>Engagement - Christchurch City Council</div>
     <div class='job-desc'>
     Christchurch is undergoing significant infrastructure upgrades and investment in new community facilities. While these projects deliver long-term benefits, they can also create disruption for residents, businesses, and road users during construction. My role is to help bridge the gap between project teams and communities by planning and delivering strategic engagement, providing clear and authentic communications, and ensuring stakeholder concerns and feedback are understood and addressed throughout the project lifecycle.<br><br>
     A core part of this is managing public enquiries, ensuring every community member feels heard and respected. Even when an issue falls outside my direct scope, I take ownership of the query, coordinating with internal teams to ensure the resident receives a clear response and a tangible solution. To see this approach in action, take a look at the Reels I created for the Welcome Back to the Ōtākaro Avon River Corridor campaign above.<br><br>
@@ -177,28 +176,29 @@ st.markdown("""
 st.markdown("---")
 
 # --- ROLE 2: DIGITAL CONTENT CREATOR ---
+st.markdown("<div class='job-title'>Digital Content Creator</div>", unsafe_allow_html=True)
+
 # ROW 1: IMAGES
 col3, col4, col5 = st.columns(3, gap="large")
 with col3:
     st.image("IMG_9583.jpeg", use_container_width=True)
-    st.markdown("<p style='font-size: 0.75rem; font-weight: 300; margin-top: 0px; text-align: center; color: #ffffff;'>Leapmotor High-Ticket</p>", unsafe_allow_html=True)
+    st.markdown("<p style='font-size: 0.75rem; font-weight: 300; margin-top: 0px; text-align: center; color: #ffffff;'>Your new vehicle choice - Leapmotor C10</p>", unsafe_allow_html=True)
     st.link_button("VIEW POST", "https://www.xiaohongshu.com/discovery/item/679b28f2000000002902bb7a?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=normal&xsec_token=CBmfg0EZN8pQGy56tj00S8Vk68ZE7QU07VM89gXHHbIjY=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780306736&share_id=28fdb21358f64eaeb70787e4de81bf1e")
-    st.markdown("<p style='font-size: 0.6rem; color: #888888; text-align: center; margin-top: -5px;'>*Close login to view*</p>", unsafe_allow_html=True)
+    st.markdown("<p style='font-size: 0.6rem; color: #888888; text-align: center; margin-top: -5px;'>*When the login window appears, close it and click the first post.*</p>", unsafe_allow_html=True)
 with col4:
     st.image("IMG_9584.jpeg", use_container_width=True)
-    st.markdown("<p style='font-size: 0.75rem; font-weight: 300; margin-top: 0px; text-align: center; color: #ffffff;'>New Zealand Residency</p>", unsafe_allow_html=True)
+    st.markdown("<p style='font-size: 0.75rem; font-weight: 300; margin-top: 0px; text-align: center; color: #ffffff;'>I got New Zealand residency! How to get it</p>", unsafe_allow_html=True)
     st.link_button("VIEW POST", "https://www.xiaohongshu.com/explore/69b39551000000001d01a139?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBQjm4fpq5mn1gNaXvSmqHEycceO2k-imt_Fbpuwvq6H8=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780181402&share_id=53e9fd52d8c04b7dae101bdce8eb1d6d&wechatWid=435edd56e9ec82ab602023bc63e060ea&wechatOrigin=menu")
-    st.markdown("<p style='font-size: 0.6rem; color: #888888; text-align: center; margin-top: -5px;'>*Close login to view*</p>", unsafe_allow_html=True)
+    st.markdown("<p style='font-size: 0.6rem; color: #888888; text-align: center; margin-top: -5px;'>*When the login window appears, close it and click the first post.*</p>", unsafe_allow_html=True)
 with col5:
     st.image("IMG_9586.jpeg", use_container_width=True)
-    st.markdown("<p style='font-size: 0.75rem; font-weight: 300; margin-top: 0px; text-align: center; color: #ffffff;'>Radiance Collab</p>", unsafe_allow_html=True)
+    st.markdown("<p style='font-size: 0.75rem; font-weight: 300; margin-top: 0px; text-align: center; color: #ffffff;'>Radiance Collagen is the essence of your day</p>", unsafe_allow_html=True)
     st.link_button("VIEW POST", "https://www.xiaohongshu.com/explore/6997fc1b000000000a03cdd9?app_platform=ios&app_version=9.32.2&share_from_user_hidden=true&xsec_source=app_share&type=video&xsec_token=CBgL-TXLpQOrDbz-8xDbRzFiDAhVtJE6woP0LxvZXLPPY=&author_share=1&xhsshare=WeixinSession&shareRedId=N0czNkc5Nj43OEdHOjgxSjkzQjxISzZC&apptime=1780181502&share_id=335f634135904b8d9cbae1b42238a444&wechatWid=435edd56e9ec82ab602023bc63e060ea&wechatOrigin=menu")
-    st.markdown("<p style='font-size: 0.6rem; color: #888888; text-align: center; margin-top: -5px;'>*Close login to view*</p>", unsafe_allow_html=True)
+    st.markdown("<p style='font-size: 0.6rem; color: #888888; text-align: center; margin-top: -5px;'>*When the login window appears, close it and click the first post.*</p>", unsafe_allow_html=True)
 
 # ROW 2: TEXT
 st.markdown("""
 <div style="margin-top: 3rem;">
-    <div class='job-title'>Digital Content Creator</div>
     <div class='job-desc'>
     Outside of my government roles, I have built and managed a cross-cultural digital platform on Xiaohongshu (RedNote), growing a highly engaged community with over 4,000 followers and 140,000+ likes. By creating authentic short-form video and livestream content, I connect Chinese audiences with New Zealand’s culture, lifestyle, and premium products.<br><br>
     This platform operates as a fully functioning digital business. I pitch, negotiate, and execute brand collaborations with major New Zealand and international companies, including Radiance Collagen, Lorna Jane, Untouched World, Blackmores, BioTrace, Partridge Jewellers, and Leapmotor. I also leverage this audience to drive community engagement and brand growth for Flavooo Protein.<br><br>
@@ -210,15 +210,16 @@ st.markdown("""
 st.markdown("---")
 
 # --- ROLE 3: CIVIL DEFENCE ---
+st.markdown("<div class='job-title'>Community Resilience Coordinator</div>", unsafe_allow_html=True)
+
 # ROW 1: VIDEO
-_, col_vid, _ = st.columns([1, 2, 1])
+_, col_vid, _ = st.columns([1, 3, 1]) # Shrunk the video column slightly for more negative space
 with col_vid:
     st.video("https://youtu.be/-5L7fV-XE00?si=92H8znN8mAvgQznN")
 
 # ROW 2: TEXT
 st.markdown("""
 <div style="margin-top: 3rem;">
-    <div class='job-title'>Community Resilience Coordinator</div>
     <div class='job-desc'>
     Effective emergency management relies on communities being prepared, informed, and connected before a crisis hits. In this role, I designed and delivered interactive resilience programmes across Ōtautahi, ensuring diverse communities had the tools and knowledge to protect themselves during high-stakes events.<br><br>
     My focus was on building deep, trusted partnerships with local leaders, organizations, and response agencies. Through hui, workshops, and planning sessions, we co-designed community response plans that translated complex, bureaucratic emergency procedures into clear, actionable, and culturally responsive steps. To see how we communicated this to new residents, take a look at the preparedness video I helped produce for the Welcoming Package above.<br><br>
