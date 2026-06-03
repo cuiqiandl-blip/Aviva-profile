@@ -1,18 +1,8 @@
 import streamlit as st
 import pandas as pd
-import base64
-import os
 
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="Aviva Cui | Portfolio", layout="wide", initial_sidebar_state="collapsed")
-
-# --- HELPER FUNCTION FOR IMAGES ---
-def get_base64_of_file(file_path):
-    """Reads a local image and converts it to base64 for HTML injection."""
-    if os.path.exists(file_path):
-        with open(file_path, "rb") as f:
-            return base64.b64encode(f.read()).decode()
-    return None
 
 # --- DARK MODE & EDITORIAL CSS ---
 st.markdown("""
@@ -44,24 +34,24 @@ st.markdown("""
     
     .job-title {
         font-family: 'Inter', sans-serif;
-        font-size: 1.3rem; /* Made smaller */
+        font-size: 1.3rem;
         font-weight: 800;
         text-transform: uppercase;
         letter-spacing: -0.5px;
         margin-top: 0px;
         margin-bottom: 10px;
         color: #ffffff;
-        text-align: center; /* Centered */
+        text-align: center;
     }
     
     .job-desc {
         font-weight: 300;
         line-height: 1.7;
         color: #cccccc; 
-        font-size: 0.85rem; /* Made significantly smaller */
-        text-align: center; /* Centered text */
-        margin: 0 auto; 
-        max-width: 85%; /* Pushes text into the middle, adding breathing room */
+        font-size: 0.85rem;
+        text-align: center;
+        margin: 0 auto;
+        max-width: 85%;
     }
     
     /* Expand the layout slightly */
@@ -75,55 +65,6 @@ st.markdown("""
     header {visibility: hidden;}
     footer {visibility: hidden;}
     #MainMenu {visibility: hidden;}
-    
-    /* =========================================
-       "OPEN BOOK" EDITORIAL SPREAD
-       ========================================= */
-    .open-book-container {
-        display: flex;
-        width: 100%;
-        max-width: 900px; /* Fixed width to guarantee the journal shape */
-        height: 550px; /* Fixed height to guarantee the journal shape */
-        margin: 4rem auto;
-        border: 1px solid #333333;
-        background-color: #050505;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-    }
-    
-    .book-left-page {
-        flex: 1;
-        border-right: 1px solid #333333;
-        position: relative;
-        padding: 2rem; /* Creates elegant padding inside the page */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .image-frame {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        border: 1px solid #222222; /* Frame around the photo */
-    }
-    
-    .book-right-page {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 3rem;
-    }
-    
-    .fade-img {
-        position: absolute;
-        top: 0; left: 0; 
-        width: 100%; height: 100%;
-        object-fit: cover;
-        opacity: 0; /* Hidden by default, controlled by animation */
-    }
     
     /* MASSIVE breathing room between sections */
     hr {
@@ -165,10 +106,26 @@ st.markdown("""
         padding-bottom: 2px;
         font-weight: 500;
     }
+    
+    /* Image subtle zoom */
+    [data-testid="stImage"] img {
+        transition: transform 0.3s ease;
+    }
+    [data-testid="stImage"] img:hover {
+        transform: scale(1.02);
+    }
+    .stImage {
+        margin-bottom: 0.5rem;
+    }
     </style>
     """, unsafe_allow_html=True)
 
-# --- EDITORIAL MARQUEE (Moved to very top) ---
+# --- NAME HEADER (TOP) ---
+st.markdown("""
+<h1 style="font-family: 'Inter', sans-serif; font-size: 5rem; font-weight: 800; color: #ffffff; letter-spacing: 4px; text-align: center; margin-bottom: 1rem; line-height: 1;">AVIVA CUI</h1>
+""", unsafe_allow_html=True)
+
+# --- EDITORIAL MARQUEE ---
 st.markdown("""
 <div style="width: 100%; overflow: hidden; background-color: #000000; color: #ffffff; border-top: 1px solid #333333; border-bottom: 1px solid #333333; padding: 12px 0; white-space: nowrap; display: flex;">
     <div style="animation: scroll-left 25s linear infinite; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; display: flex; flex-shrink: 0;">
@@ -179,68 +136,17 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# --- "A JOURNAL ON" OPEN BOOK SPREAD ---
-# Using the exact 6 photos requested
-journal_images = [
-    "IMG_0433.jpeg", 
-    "IMG_9583.jpeg",
-    "IMG_9584.jpeg",
-    "IMG_9586.jpeg",
-    "Image_20260601223856_28_1.png",
-    "Image_20260602213535_35_1.jpg"
-]
-
-valid_b64s = []
-for img_path in journal_images:
-    b64 = get_base64_of_file(img_path)
-    if b64:
-        ext = img_path.split('.')[-1]
-        if ext.lower() == 'jpg': ext = 'jpeg'
-        valid_b64s.append((ext, b64))
-
-if valid_b64s:
-    n = len(valid_b64s)
-    time_per_slide = 3.5 # Seconds each image is shown
-    total_time = n * time_per_slide
-    pct_visible = 100.0 / n
-    fade_dur = 5.0 # Smoothness of fade
-
-    # Generate CSS keyframes for 6 photos
-    keyframes = f"""
-    <style>
-    @keyframes fadeAnim {{
-        0% {{ opacity: 0; }}
-        {fade_dur}% {{ opacity: 1; }}
-        {pct_visible - fade_dur}% {{ opacity: 1; }}
-        {pct_visible}% {{ opacity: 0; }}
-        100% {{ opacity: 0; }}
-    }}
-    </style>
-    """
-    
-    images_html = ""
-    for i, (ext, b64) in enumerate(valid_b64s):
-        delay = i * time_per_slide
-        images_html += f'<img class="fade-img" src="data:image/{ext};base64,{b64}" style="animation: fadeAnim {total_time}s infinite {delay}s;" />'
-    
-    editorial_hero_html = f"""
-    {keyframes}
-    <div class="open-book-container">
-        <div class="book-left-page">
-            <div class="image-frame">
-                {images_html}
-            </div>
-        </div>
-        <div class="book-right-page">
-            <h1 style="font-family: 'Inter', sans-serif; font-size: 4.5rem; font-weight: 800; color: #ffffff; letter-spacing: 2px; margin: 0 0 10px 0; line-height: 1; text-align: center;">AVIVA<br>CUI</h1>
-            <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #888888; letter-spacing: 4px; text-transform: uppercase; margin: 0;">Portfolio</p>
-            <hr style="width: 40px; border-top: 2px solid #555555; margin-top: 30px;">
-        </div>
-    </div>
-    """
-    st.markdown(editorial_hero_html, unsafe_allow_html=True)
-else:
-    st.warning("Please ensure your hero images are uploaded to GitHub.")
+# --- EDITORIAL TYPOGRAPHY HERO ("A JOURNAL ON" STYLE) ---
+st.markdown("""
+<div style="width: 100%; max-width: 900px; margin: 8rem auto 8rem auto; padding: 0 20px;">
+    <h2 style="font-family: 'Inter', sans-serif; font-size: 4rem; font-weight: 800; color: #ffffff; letter-spacing: -2px; line-height: 1.1; margin-bottom: 2rem;">
+        I want you to have all of the nice things and experiences that you deserve.
+    </h2>
+    <p style="font-family: 'Inter', sans-serif; font-size: 1.3rem; font-weight: 300; color: #888888; letter-spacing: 1px; margin: 0;">
+        Let me help you.
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
 st.markdown("---")
 
