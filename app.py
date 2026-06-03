@@ -74,56 +74,25 @@ st.markdown("""
     #MainMenu {visibility: hidden;}
     
     /* =========================================
-       "A JOURNAL ON" PHYSICAL BOOK LAYOUT
+       "A JOURNAL ON" CENTERED PORTRAIT BOOK
        ========================================= */
-    .journal-book {
-        display: flex;
-        width: 100%;
-        max-width: 1100px;
-        height: 75vh;
-        margin: 3rem auto 5rem auto;
-        border: 1px solid #333333;
-        background-color: #050505;
-        box-shadow: 0 30px 60px rgba(0,0,0,0.8);
-    }
-    .journal-left-page {
-        width: 45%;
-        height: 100%;
-        border-right: 1px solid #333333;
-        overflow: hidden;
+    .journal-center {
+        width: 400px !important; /* Forces strict width */
+        height: 600px !important; /* Forces strict height for the tall book shape */
+        margin: 4rem auto; /* Centers it perfectly */
         position: relative;
-        background-color: #000000;
-    }
-    .journal-right-page {
-        width: 55%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 0 10%;
+        overflow: hidden;
+        border: 1px solid #333333;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.8);
         background-color: #050505;
     }
     
-    /* Smooth, Padded Vertical Scroll (Editorial Style) */
-    .scroll-track {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 2rem;
-        animation: verticalScroll 40s linear infinite;
-    }
-    .scroll-track img {
-        width: 80%;
-        aspect-ratio: 4 / 5;
+    .fade-img {
+        position: absolute;
+        top: 0; left: 0; 
+        width: 100%; height: 100%;
         object-fit: cover;
-        margin-bottom: 3rem;
-        border: 1px solid #222222;
-        padding: 10px;
-        background: #111111;
-    }
-    @keyframes verticalScroll {
-        0% { transform: translateY(0); }
-        100% { transform: translateY(-50%); }
+        opacity: 0; /* Hidden by default, controlled by animation */
     }
     
     /* MASSIVE breathing room between sections */
@@ -189,50 +158,54 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# --- DYNAMIC IMAGE LOADER ---
-all_files = os.listdir('.')
-job_images = [
-    "Image_20260602213535_35_1.jpg", 
-    "Image_20260602214021_36_1.jpg", 
-    "IMG_9583.jpeg", 
-    "IMG_9584.jpeg", 
-    "IMG_9586.jpeg"
+
+# --- CENTERED "JOURNAL" FADING SLIDESHOW ---
+# Only utilizing the explicit portrait photos from your allowed list
+journal_images = [
+    "IMG_0433.jpeg", 
+    "Image_20260601223856_28_1.png"
 ]
 
-dynamic_hero_images = [f for f in all_files if f.lower().endswith(('.png', '.jpg', '.jpeg')) and f not in job_images]
-
 valid_b64s = []
-for img_path in dynamic_hero_images:
+for img_path in journal_images:
     b64 = get_base64_of_file(img_path)
     if b64:
-        valid_b64s.append((img_path, b64))
+        valid_b64s.append(b64)
 
 if valid_b64s:
-    images_html = ""
-    for path, b64 in valid_b64s:
-        ext = path.split('.')[-1]
-        images_html += f'<img src="data:image/{ext};base64,{b64}" />'
-    
-    infinite_scroll_html = images_html + images_html
+    n = len(valid_b64s)
+    time_per_slide = 5.0 # Seconds each image is shown
+    total_time = n * time_per_slide
+    pct_visible = 100.0 / n
+    fade_dur = 10.0 # Smoothness of the fade
 
+    # Dynamically generate CSS keyframes for a perfect, math-based crossfade
+    keyframes = f"""
+    <style>
+    @keyframes fadeAnim {{
+        0% {{ opacity: 0; }}
+        {fade_dur}% {{ opacity: 1; }}
+        {pct_visible - fade_dur}% {{ opacity: 1; }}
+        {pct_visible}% {{ opacity: 0; }}
+        100% {{ opacity: 0; }}
+    }}
+    </style>
+    """
+    
+    images_html = ""
+    for i, b64 in enumerate(valid_b64s):
+        delay = i * time_per_slide
+        images_html += f'<img class="fade-img" src="data:image/jpeg;base64,{b64}" style="animation: fadeAnim {total_time}s infinite {delay}s;" />'
+    
     editorial_hero_html = f"""
-    <div class="journal-book">
-        <div class="journal-left-page">
-            <div class="scroll-track">
-                {infinite_scroll_html}
-            </div>
-        </div>
-        <div class="journal-right-page">
-            <h1 style="font-family: 'Inter', sans-serif; font-size: 4rem; font-weight: 800; color: #ffffff; letter-spacing: -2px; margin: 0 0 20px 0; line-height: 1;">PORTFOLIO.</h1>
-            <p style="font-family: 'Inter', sans-serif; color: #cccccc; font-size: 1.15rem; line-height: 1.8; font-weight: 300; margin: 0; text-align: justify;">
-            Grounded in Te Tiriti o Waitangi principles, I design and deliver engagement that is authentic, inclusive, and strategic, ensuring decisions are well-informed and outcomes are optimised. Alongside this, my emergency management and Duty Officer experience has strengthened my ability to communicate clearly, build trust, and support effective delivery in complex and high-stakes environments.
-            </p>
-        </div>
+    {keyframes}
+    <div class="journal-center">
+        {images_html}
     </div>
     """
     st.markdown(editorial_hero_html, unsafe_allow_html=True)
 else:
-    st.warning("Please upload your portrait/hero photos to GitHub!")
+    st.warning("Please ensure 'IMG_0433.jpeg' and 'Image_20260601223856_28_1.png' are uploaded to your GitHub repository.")
 
 st.markdown("---")
 
