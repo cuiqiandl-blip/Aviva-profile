@@ -120,9 +120,14 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# --- NAME HEADER (TOP) ---
+# --- NAME HEADER & CONTACT INFO (TOP) ---
 st.markdown("""
-<h1 style="font-family: 'Inter', sans-serif; font-size: 5rem; font-weight: 800; color: #ffffff; letter-spacing: 4px; text-align: center; margin-bottom: 1rem; line-height: 1;">AVIVA CUI</h1>
+<div style="position: relative; width: 100%; padding-top: 2rem;">
+    <div style="position: absolute; top: 0; left: 0; text-align: left; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 500; color: #aaaaaa; letter-spacing: 1px; line-height: 1.6;">
+        cuiqiandl@gmail.com<br>02108668972
+    </div>
+    <h1 style="font-family: 'Inter', sans-serif; font-size: 5rem; font-weight: 800; color: #ffffff; letter-spacing: 4px; text-align: center; margin-bottom: 1rem; line-height: 1;">AVIVA CUI</h1>
+</div>
 """, unsafe_allow_html=True)
 
 # --- EDITORIAL MARQUEE ---
@@ -232,10 +237,9 @@ st.markdown("---")
 
 # --- FOOTER ---
 st.markdown("""
-<div style="text-align: center; padding: 20px;">
-    <p style="font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.5rem; margin-bottom: 15px; color: #ffffff; text-transform: uppercase; letter-spacing: -0.5px;">Let's build something beautiful together.</p>
-    <p style="font-size: 0.85rem; font-weight: 500; color: #aaaaaa; text-transform: uppercase; letter-spacing: 1px;">
-        cuiqiandl@gmail.com &nbsp;&nbsp;|&nbsp;&nbsp; 021 086 68972 &nbsp;&nbsp;|&nbsp;&nbsp; Ōtautahi Christchurch
-    </p>
+<div style="width: 100%; max-width: 900px; margin: 4rem auto 8rem auto; padding: 0 20px; text-align: center;">
+    <h2 style="font-family: 'Inter', sans-serif; font-size: 4rem; font-weight: 800; color: #ffffff; letter-spacing: -2px; line-height: 1.1; margin-bottom: 0;">
+        Let's build something beautiful together.
+    </h2>
 </div>
 """, unsafe_allow_html=True)
