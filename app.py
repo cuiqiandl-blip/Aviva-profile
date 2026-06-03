@@ -1,8 +1,18 @@
 import streamlit as st
 import pandas as pd
+import base64
+import os
 
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="Aviva Cui | Portfolio", layout="wide", initial_sidebar_state="collapsed")
+
+# --- HELPER FUNCTION FOR IMAGES ---
+def get_base64_of_file(file_path):
+    """Reads a local image and converts it to base64 for HTML injection."""
+    if os.path.exists(file_path):
+        with open(file_path, "rb") as f:
+            return base64.b64encode(f.read()).decode()
+    return None
 
 # --- DARK MODE & EDITORIAL CSS ---
 st.markdown("""
@@ -158,8 +168,9 @@ with col_ccc_text:
     <div style="margin-top: 1rem;">
         <div class='job-title'>Engagement - Christchurch City Council</div>
         <div class='job-desc'>
-        I work across multiple infrastructure and consultation projects to deliver community engagement, customer support, and communications. My role involves managing enquiries and coordinating with internal teams to ensure issues are resolved and community members feel heard and informed. I also translate complex technical information into clear, accessible messaging, build trusted relationships with stakeholders, and ensure community feedback is reflected in project decisions. See the Reels examples I created for the Welcome Back to the Ōtākaro Avon River Corridor campaign.<br><br>
-        This role has strengthened my ability to engage diverse audiences, balance competing perspectives, and deliver positive community experiences across projects including the Lincoln Road Wastewater and Road Upgrade, Central City Coach Tour Bus Parking, and Halswell Junction Road cul-de-sac renaming project.
+        Christchurch is undergoing significant infrastructure upgrades and investment in new community facilities. While these projects deliver long-term benefits, they can also create disruption for residents, businesses, and road users during construction. My role is to help bridge the gap between project teams and communities by planning and delivering strategic engagement, providing clear and authentic communications, and ensuring stakeholder concerns and feedback are understood and addressed throughout the project lifecycle.<br><br>
+        A core part of this is managing public enquiries, ensuring every community member feels heard and respected. Even when an issue falls outside my direct scope, I take ownership of the query, coordinating with internal teams to ensure the resident receives a clear response and a tangible solution. To see this approach in action, take a look at the Reels I created for the Welcome Back to the Ōtākaro Avon River Corridor campaign below.<br><br>
+        This role has strengthened my ability to engage diverse audiences, balance competing perspectives, and deliver positive community experiences across projects including the Lincoln Road Wastewater and Road Upgrade, Central City Coach Tour Bus Parking, and the Halswell Junction Road cul-de-sac renaming project.
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -203,9 +214,9 @@ with col_dcc_text:
     <div style="margin-top: 1rem;">
         <div class='job-title'>Digital Content Creator</div>
         <div class='job-desc'>
-        Outside of my professional roles, I build and manage a cross-cultural content platform on Xiaohongshu (RedNote) with 4,000+ followers and 140,000+ likes. I create short-form videos and livestream content that connect Chinese audiences with New Zealand culture, products, work life, and outdoor lifestyles.<br><br>
-        I have collaborated with a range of New Zealand and international brands, including Radiance Collagen, Lorna Jane, Untouched World, Blackmores, Flavooo Protein, BioTrace, Partridge Jewellers, and Leapmotor. Through these collaborations, I have also begun supporting community engagement activities for Flavooo Protein.<br><br>
-        Managing my own platform has strengthened my commercial awareness, content creation skills, audience engagement strategies, and understanding of emerging social media trends and algorithms. Please see examples of my content and brand collaborations from my account.
+        Outside of my government roles, I have built and managed a cross-cultural digital platform on Xiaohongshu (RedNote), growing a highly engaged community with over 4,000 followers and 140,000+ likes. By creating authentic short-form video and livestream content, I connect Chinese audiences with New Zealand’s culture, lifestyle, and premium products.<br><br>
+        This platform operates as a fully functioning digital business. I pitch, negotiate, and execute brand collaborations with major New Zealand and international companies, including Radiance Collagen, Lorna Jane, Untouched World, Blackmores, BioTrace, Partridge Jewellers, and Leapmotor. I also leverage this audience to drive community engagement and brand growth for Flavooo Protein.<br><br>
+        Running this channel has sharpened my commercial acumen, storytelling capabilities, and ability to read social algorithms—proving I can build deep audience trust and translate that attention into measurable brand impact.
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -220,8 +231,9 @@ with col_cd_text:
     <div style="margin-top: 1rem;">
         <div class='job-title'>Community Resilience Coordinator</div>
         <div class='job-desc'>
-        I designed and delivered clear, accessible, and interactive community resilience programmes that translated complex emergency information into practical actions to strengthen emergency preparedness across diverse communities in Ōtautahi. My work also focused on building trusted partnerships with community leaders, organisations, and agencies through hui, events, workshops, and planning sessions to co-design community response plans and empower community resilience. See the preparedness video I was involved in for the Welcoming Package.<br><br>
-        This experience strengthened my leadership, project coordination, and communication skills, requiring me to balance multiple responsibilities and stakeholders while working in complex and high-pressure environments.
+        Effective emergency management relies on communities being prepared, informed, and connected before a crisis hits. In this role, I designed and delivered interactive resilience programmes across Ōtautahi, ensuring diverse communities had the tools and knowledge to protect themselves during high-stakes events.<br><br>
+        My focus was on building deep, trusted partnerships with local leaders, organizations, and response agencies. Through hui, workshops, and planning sessions, we co-designed community response plans that translated complex, bureaucratic emergency procedures into clear, actionable, and culturally responsive steps. To see how we communicated this to new residents, take a look at the preparedness video I helped produce for the Welcoming Package below.<br><br>
+        Operating in a complex, high-pressure emergency management environment sharpened my project coordination and stakeholder management skills. It taught me how to lead with empathy, align multiple agencies, and empower communities to take ownership of their own resilience.
         </div>
     </div>
     """, unsafe_allow_html=True)
