@@ -124,7 +124,7 @@ st.markdown("""
 st.markdown("""
 <div style="position: relative; width: 100%; padding-top: 2rem;">
     <div style="position: absolute; top: 0; left: 0; text-align: left; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 500; color: #aaaaaa; letter-spacing: 1px; line-height: 1.6;">
-        cuiqiandl@gmail.com<br>02108668972
+        cuiqiandl@gmail.com
     </div>
     <h1 style="font-family: 'Inter', sans-serif; font-size: 5rem; font-weight: 800; color: #ffffff; letter-spacing: 4px; text-align: center; margin-bottom: 1rem; line-height: 1;">AVIVA CUI</h1>
 </div>
