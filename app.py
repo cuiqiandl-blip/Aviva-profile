@@ -134,21 +134,20 @@ st.markdown("""
 st.markdown("""
 <div style="width: 100%; overflow: hidden; background-color: #000000; color: #ffffff; border-top: 1px solid #333333; border-bottom: 1px solid #333333; padding: 12px 0; white-space: nowrap; display: flex;">
     <div style="animation: scroll-left 25s linear infinite; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; display: flex; flex-shrink: 0;">
-        <span style="padding-right: 40px;">COMMUNITY BUILDING &nbsp;&nbsp;•&nbsp;&nbsp; CONTENT CREATION & STORYTELLING &nbsp;&nbsp;•&nbsp;&nbsp; AUDIENCE BEHAVIOUR & PSYCHOLOGY &nbsp;&nbsp;•&nbsp;&nbsp; CROSS-CULTURAL ENGAGEMENT &nbsp;&nbsp;•&nbsp;&nbsp; AI-DRIVEN CURIOSITY & INNOVATION</span>
-        <span style="padding-right: 40px;">COMMUNITY BUILDING &nbsp;&nbsp;•&nbsp;&nbsp; CONTENT CREATION & STORYTELLING &nbsp;&nbsp;•&nbsp;&nbsp; AUDIENCE BEHAVIOUR & PSYCHOLOGY &nbsp;&nbsp;•&nbsp;&nbsp; CROSS-CULTURAL ENGAGEMENT &nbsp;&nbsp;•&nbsp;&nbsp; AI-DRIVEN CURIOSITY & INNOVATION</span>
+        <span style="padding-right: 40px;">ENGAGEMENT &nbsp;&nbsp;•&nbsp;&nbsp; CONTENT CREATION & STORYTELLING &nbsp;&nbsp;•&nbsp;&nbsp; INNOVATIVE COMMUNITY DEVELOPMENT &nbsp;&nbsp;•&nbsp;&nbsp; ENGAGEMENT &nbsp;&nbsp;•&nbsp;&nbsp; CONTENT CREATION & STORYTELLING &nbsp;&nbsp;•&nbsp;&nbsp; INNOVATIVE COMMUNITY DEVELOPMENT</span>
+        <span style="padding-right: 40px;">ENGAGEMENT &nbsp;&nbsp;•&nbsp;&nbsp; CONTENT CREATION & STORYTELLING &nbsp;&nbsp;•&nbsp;&nbsp; INNOVATIVE COMMUNITY DEVELOPMENT &nbsp;&nbsp;•&nbsp;&nbsp; ENGAGEMENT &nbsp;&nbsp;•&nbsp;&nbsp; CONTENT CREATION & STORYTELLING &nbsp;&nbsp;•&nbsp;&nbsp; INNOVATIVE COMMUNITY DEVELOPMENT</span>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
 
-# --- EDITORIAL TYPOGRAPHY HERO ("A JOURNAL ON" STYLE) ---
+# --- INTRODUCTION HERO (CLEAN & EDITORIAL) ---
 st.markdown("""
-<div style="width: 100%; max-width: 900px; margin: 8rem auto 8rem auto; padding: 0 20px;">
-    <h2 style="font-family: 'Inter', sans-serif; font-size: 4rem; font-weight: 800; color: #ffffff; letter-spacing: -2px; line-height: 1.1; margin-bottom: 2rem;">
-        I want you to have all of the nice things and experiences that you deserve.
-    </h2>
-    <p style="font-family: 'Inter', sans-serif; font-size: 1.3rem; font-weight: 300; color: #888888; letter-spacing: 1px; margin: 0;">
-        Let me help you.
+<div style="width: 100%; max-width: 750px; margin: 6rem auto 6rem auto; padding: 0 20px;">
+    <p style="font-family: 'Inter', sans-serif; font-size: 1.15rem; font-weight: 300; color: #cccccc; letter-spacing: 0.5px; line-height: 1.8; margin: 0; text-align: center;">
+        I work in communications and engagement, helping organisations connect with people through clear and authentic communication.<br><br>
+        My focus is ensuring people understand decisions, have opportunities to contribute, and trust the outcomes that affect them.<br><br>
+        Outside my professional work, I teach group fitness and manage a social media platform focused on community engagement and audience connection.
     </p>
 </div>
 """, unsafe_allow_html=True)
